@@ -22,7 +22,7 @@
   @media (max-width: 980px) { main { grid-template-columns: 1fr; } }
   .card { background:var(--panel); border:1px solid var(--outline); border-radius:12px; padding:14px; box-shadow:0 8px 24px rgba(0,0,0,.12); }
   main > .card { min-height: 0; }
-  .card.scroll{ overflow: auto; }
+  .card.scroll{ overflow: auto; scroll-behavior: smooth; }
   .card.chart-card{ /* no overflow; just fills available height */ }
   canvas{ width: 100%; height: 100%; background: #0a0d18; border-radius: 12px; display: block; }
   .title { font-weight:800; margin:0 0 10px; }
@@ -32,7 +32,8 @@
   .item:last-child{ border-bottom:0; }
   .qtext{ margin:0 0 6px; }
   .scale{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
-  input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
+  input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; left:-9999px; }
+  input[type="radio"]:focus{ outline:none; }
   .scale label{ display:inline-block; text-align:center; padding:8px 0; border:1px solid var(--outline); border-radius:8px; cursor:pointer; color:var(--muted); }
   input[type="radio"]:checked + label{ color:var(--ink); border-color:var(--accent); background:linear-gradient(180deg, rgba(108,198,255,.12), transparent); font-weight:700; }
   .actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px; }
@@ -76,7 +77,7 @@
     </label>
 
     <span class="muted" style="margin-left:12px;">Year:</span>
-    <input id="yearRange" type="range" min="-1200" max="2025" value="2025" step="10" style="width:220px; vertical-align:middle;">
+    <input id="yearRange" type="range" min="-3000" max="2025" value="2025" step="10" style="width:220px; vertical-align:middle;">
     <span id="yearLabel" class="muted" style="min-width:62px; display:inline-block;">≤ 2025</span>
     <br>
     <label class="muted" style="margin-left:12px;">
@@ -101,7 +102,6 @@
         <option value="figures">Figures only</option>
       </select>
     </label>
-    <a href="traditions.csv" download class="muted" style="margin-left:auto">Download CSV</a>
   </div>
 </header>
 
@@ -109,49 +109,52 @@
   <section class="card scroll">
     <h2 class="title">Your Responses</h2>
     <form id="taoForm">
-      <fieldset>
+      <fieldset class="t-fields">
         <legend>Temporal Orientation (T)</legend>
         <p class="muted">1 = Strongly disagree… 7 = Strongly agree</p>
-        <div class="item"><p class="qtext">T1. History has a direction; humanity is moving toward a goal.</p><div class="scale" data-key="T1"></div></div>
-        <div class="item"><p class="qtext">T2. The same kinds of events repeat in new forms across eras.</p><div class="scale" data-key="T2"></div></div>
-        <div class="item"><p class="qtext">T3. I feel time as a series of discrete steps and milestones.</p><div class="scale" data-key="T3"></div></div>
-        <div class="item"><p class="qtext">T4. Meaning is found by returning to foundational patterns and renewing them.</p><div class="scale" data-key="T4"></div></div>
-        <div class="item"><p class="qtext">T5. My past, present, and future feel like one continuous flow.</p><div class="scale" data-key="T5"></div></div>
-        <div class="item"><p class="qtext">T6. I plan life as a straight line toward clear endpoints.</p><div class="scale" data-key="T6"></div></div>
-        <div class="item"><p class="qtext">T7. What goes around comes around—even across generations.</p><div class="scale" data-key="T7"></div></div>
-        <div class="item"><p class="qtext">T8. I experience change more as rhythm than as progress.</p><div class="scale" data-key="T8"></div></div>
-        <div class="item"><p class="qtext">T9. Apocalyptic or utopian endpoints make sense to me.</p><div class="scale" data-key="T9"></div></div>
-        <div class="item"><p class="qtext">T10. I prefer cycles (seasons, rituals) to one-off culminations.</p><div class="scale" data-key="T10"></div></div>
+
+        <div class="item"><p class="qtext">T1. Over the long run, history tends toward improvement.</p><div class="scale" data-key="T1"></div></div>
+        <div class="item"><p class="qtext">T2. Historical patterns primarily recur in cycles rather than moving toward an endpoint.</p><div class="scale" data-key="T2" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">T3. Lasting change is chiefly cumulative progress rather than repetition.</p><div class="scale" data-key="T3"></div></div>
+        <div class="item"><p class="qtext">T4. Societies should prioritize renewal of established patterns over pursuit of novelty.</p><div class="scale" data-key="T4" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">T5. History will culminate in a decisive transformation.</p><div class="scale" data-key="T5"></div></div>
+        <div class="item"><p class="qtext">T6. Time is best understood as oriented toward defined milestones and end-states.</p><div class="scale" data-key="T6"></div></div>
+        <div class="item"><p class="qtext">T7. Across generations, the same types of events return with new faces.</p><div class="scale" data-key="T7" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">T8. “Progress” is mostly a change of form; core problems recur.</p><div class="scale" data-key="T8" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">T9. When preservation and innovation conflict, innovation should generally lead.</p><div class="scale" data-key="T9"></div></div>
+        <div class="item"><p class="qtext">T10. Cyclical rhythms (seasons, rites, returns) are a more accurate model of time than linear advance.</p><div class="scale" data-key="T10" data-reverse="true"></div></div>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="a-fields">
         <legend>Agency Orientation (A)</legend>
         <p class="muted">1 = Strongly disagree… 7 = Strongly agree</p>
-        <div class="item"><p class="qtext">A1. With enough will and effort, I can redirect my life at any time.</p><div class="scale" data-key="A1"></div></div>
-        <div class="item"><p class="qtext">A2. Larger forces (fate, luck, structure) limit what individuals can change.</p><div class="scale" data-key="A2"></div></div>
-        <div class="item"><p class="qtext">A3. My choices meaningfully alter future outcomes for me and others.</p><div class="scale" data-key="A3"></div></div>
-        <div class="item"><p class="qtext">A4. People mostly enact roles laid out by their circumstances.</p><div class="scale" data-key="A4"></div></div>
-        <div class="item"><p class="qtext">A5. Agency is not just individual—it emerges when people and environments align.</p><div class="scale" data-key="A5"></div></div>
-        <div class="item"><p class="qtext">A6. Moral responsibility rests primarily on individual decisions.</p><div class="scale" data-key="A6"></div></div>
-        <div class="item"><p class="qtext">A7. I often sense I’m being carried by currents I didn’t choose.</p><div class="scale" data-key="A7"></div></div>
-        <div class="item"><p class="qtext">A8. Good systems reduce how much sheer willpower is needed.</p><div class="scale" data-key="A8"></div></div>
-        <div class="item"><p class="qtext">A9. Ultimately, someone has to choose; diffusion of responsibility is a trap.</p><div class="scale" data-key="A9"></div></div>
-        <div class="item"><p class="qtext">A10. Sometimes the most effective action is non-forcing (letting the system re-balance).</p><div class="scale" data-key="A10"></div></div>
+
+        <div class="item"><p class="qtext">A1. Deliberate choice can substantially redirect life trajectories.</p><div class="scale" data-key="A1"></div></div>
+        <div class="item"><p class="qtext">A2. Outcomes are largely fixed by structures (institutions, class, biology) beyond personal control.</p><div class="scale" data-key="A2" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">A3. Collective action achieves results that individuals alone cannot.</p><div class="scale" data-key="A3"></div></div>
+        <div class="item"><p class="qtext">A4. People mostly enact roles assigned by circumstances, with limited room to redefine them.</p><div class="scale" data-key="A4" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">A5. Well-designed systems decrease reliance on personal willpower.</p><div class="scale" data-key="A5"></div></div>
+        <div class="item"><p class="qtext">A6. Chance and luck are dominant drivers of life outcomes.</p><div class="scale" data-key="A6" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">A7. Decisive authority is sometimes necessary to avoid diffusion of responsibility.</p><div class="scale" data-key="A7"></div></div>
+        <div class="item"><p class="qtext">A8. Allowing processes to self-organize often produces better results than direct control.</p><div class="scale" data-key="A8"></div></div>
+        <div class="item"><p class="qtext">A9. Moral responsibility rests primarily on individuals rather than systems.</p><div class="scale" data-key="A9"></div></div>
+        <div class="item"><p class="qtext">A10. When harms occur, the first place to assign responsibility is system design, not individual actors.</p><div class="scale" data-key="A10" data-reverse="true"></div></div>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="o-fields">
         <legend>Ontological Continuity (O)</legend>
         <p class="muted">1 = Strongly disagree… 7 = Strongly agree</p>
-        <div class="item"><p class="qtext">O1. There is a reality beyond nature that grounds truth and value.</p><div class="scale" data-key="O1"></div></div>
-        <div class="item"><p class="qtext">O2. The sacred is found within the fabric of ordinary life and relations.</p><div class="scale" data-key="O2"></div></div>
-        <div class="item"><p class="qtext">O3. The highest good comes from aligning with a transcendent order.</p><div class="scale" data-key="O3"></div></div>
-        <div class="item"><p class="qtext">O4. Dividing “spiritual” from “material” usually causes confusion.</p><div class="scale" data-key="O4"></div></div>
-        <div class="item"><p class="qtext">O5. I feel most connected when boundaries between self, others, and world soften.</p><div class="scale" data-key="O5"></div></div>
-        <div class="item"><p class="qtext">O6. Moral authority ultimately descends from outside the human world.</p><div class="scale" data-key="O6"></div></div>
-        <div class="item"><p class="qtext">O7. Nature itself is the primary locus of meaning and value.</p><div class="scale" data-key="O7"></div></div>
-        <div class="item"><p class="qtext">O8. Mystical union or non-duality points to something real.</p><div class="scale" data-key="O8"></div></div>
-        <div class="item"><p class="qtext">O9. Human purpose is to obey or serve what stands above the world.</p><div class="scale" data-key="O9"></div></div>
-        <div class="item"><p class="qtext">O10. Right relationship (with people, land, systems) is more basic than doctrine.</p><div class="scale" data-key="O10"></div></div>
+
+        <div class="item"><p class="qtext">O1. Moral truths ultimately depend on a reality that is not created by humans.</p><div class="scale" data-key="O1"></div></div>
+        <div class="item"><p class="qtext">O2. Meaning and value arise chiefly from right relationship among persons, communities, and the natural world.</p><div class="scale" data-key="O2" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">O3. The highest good requires alignment with something beyond the human world.</p><div class="scale" data-key="O3"></div></div>
+        <div class="item"><p class="qtext">O4. Treating “spiritual” and “material” as separate domains leads to error.</p><div class="scale" data-key="O4" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">O5. Boundaries between self, others, and world are ultimately conventional.</p><div class="scale" data-key="O5" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">O6. Moral authority properly descends from beyond human agreement.</p><div class="scale" data-key="O6"></div></div>
+        <div class="item"><p class="qtext">O7. Nature is a sufficient ground for meaning and value.</p><div class="scale" data-key="O7" data-reverse="true"></div></div>
+        <div class="item"><p class="qtext">O8. Claims of non-duality or mystical union indicate contact with something real.</p><div class="scale" data-key="O8"></div></div>
+        <div class="item"><p class="qtext">O9. Human purpose is primarily obedience or service to a reality above the world.</p><div class="scale" data-key="O9"></div></div>
+        <div class="item"><p class="qtext">O10. Truth claims should be justified within human inquiry without appeal to a transcendent source.</p><div class="scale" data-key="O10" data-reverse="true"></div></div>
       </fieldset>
 
       <div class="actions">
@@ -230,9 +233,9 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 })();
 
 /* Scoring */
-const T_reverse = new Set(['T1','T3','T6','T9']);
-const A_reverse = new Set(['A2','A4','A7']);
-const O_reverse = new Set(['O1','O3','O6','O9']);
+const T_reverse = new Set(document.querySelectorAll('.t-fields .scale[data-reverse]'));
+const A_reverse = new Set(document.querySelectorAll('.a-fields .scale[data-reverse]'));
+const O_reverse = new Set(document.querySelectorAll('.o-fields .scale[data-reverse]'));
 const AXES = {
   T:{items:['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10'], reverse:T_reverse},
   A:{items:['A1','A2','A3','A4','A5','A6','A7','A8','A9','A10'], reverse:A_reverse},
@@ -295,6 +298,22 @@ Process Theology,philosophy,-0.4,0.7,0.5,1920,God as evolving process.
 Atheist Physicalism,modern,-0.7,-0.3,0.6,1770,Deterministic naturalism; immanent cosmos.
 Absurdism,philosophy,-0.6,0.6,0.1,1942,Meaning through revolt.
 Postmodern Relativism,modern,0.0,0.2,0.4,1970,Deconstruction of metanarratives.
+Ancient Egyptian,religion,0.7,0.4,0.8,-2500,Maʿat/cosmic order; Nile cycles; participatory rites; immanent sacred within state theology.
+Mesopotamian (Sumerian/Akkadian),religion,0.6,0.2,0.6,-2200,Seasonal/astral cycles with fate (šīmtu); temple economy; immanent-yet-ordained cosmos.
+Canaanite/Phoenician,religion,0.7,0.5,0.7,-1200,Storm/sea and fertility cults (Baʿal/Asherah); ritual renewal; kinship with land/sea.
+Hittite/Anatolian,religion,0.6,0.3,0.6,-1500,Storm-god pantheon; treaty oaths; agrarian cycles; ritual maintenance of order.
+Hellenic Polytheism (Classical),religion,0.5,0.4,0.6,-700,Civic cults; oracles & Moira (fate) temper agency; immanent gods entwined with polis.
+Orphism (Greek),mysticism,0.3,0.4,0.7,-500,Soul purification & rebirth; mythic theogony; ritual ascent inside cyclical cosmology.
+Eleusinian Mysteries,mysticism,0.4,0.5,0.8,-600,Demeter–Persephone cycle; initiatory renewal; experiential immanence.
+Roman State Religion,religion,0.5,0.5,0.6,-200,Pax deorum via rites/auspices; civic reciprocity with gods; pragmatic immanence.
+Roman Mithraism,mysticism,0.4,0.6,0.6,150,Solar/astral grades; initiatory agency; moral discipline within cosmic cycle.
+Early Vedic (Ṛgvedic),religion,0.6,0.5,0.7,-1200,Ṛta (order) via sacrifice; cyclical fire/sky cult; immanence trending to later Vedānta.
+Celtic (Druidic),religion,0.7,0.6,0.9,-300,Animist groves; seasonal feasts (Samhain/Beltane); strong land-relation and participation.
+Norse/Germanic,religion,0.3,0.6,0.7,900,Cycles toward Ragnarök (cataclysmic endpoint); warrior agency; immanent pantheon/land-wights.
+Thracian/Daсian (Zalmoxian),religion,0.5,0.5,0.7,-400,Immortality cult of Zalmoxis; communal rites; immanent underworld/sky links.
+Etruscan,religion,0.5,0.4,0.6,-600,Divination (haruspicy); civic-portent logic; immanent omen-bound order.
+Minoan (Aegean),religion,0.7,0.5,0.8,-1700,Peak sanctuaries; fertility & maritime cycles; goddess-centric immanence.
+Scythian/Sarmatian (Steppe),religion,0.5,0.6,0.7,-500,Shamanic-royal cults; sky/horse symbolism; mobile cyclical rites.
 `.trim();
 
 const CSV_FIGURES = `
@@ -756,6 +775,39 @@ function wireTrendUI(){
   [trendToggle, trendAxis, trendSource].forEach(el => el && el.addEventListener('change', update));
 }
 
+function parseQueryParams(){
+  const params = new URLSearchParams(window.location.search);
+  const t = params.get('t');
+  const a = params.get('a');
+  const o = params.get('o');
+  
+  // Parse and validate values (should be between -1 and 1)
+  const parseValue = (val) => {
+    if (!val) return null;
+    const num = parseFloat(val);
+    if (isNaN(num)) return null;
+    return Math.max(-1, Math.min(1, num)); // clamp to [-1, 1]
+  };
+  
+  return {
+    T: parseValue(t),
+    A: parseValue(a),
+    O: parseValue(o)
+  };
+}
+
+function updateResultsFromValues(T, A, O){
+  document.getElementById('Tscore').textContent = fmt(T);
+  document.getElementById('Ascore').textContent = fmt(A);
+  document.getElementById('Oscore').textContent = fmt(O);
+  document.getElementById('Tlabel').textContent = labelFor('T', T) || '';
+  document.getElementById('Alabel').textContent = labelFor('A', A) || '';
+  document.getElementById('Olabel').textContent = labelFor('O', O) || '';
+  document.getElementById('typeLabel').textContent = typeOctant(T, A, O);
+  document.getElementById('kvs').textContent = kvSummary(T, A, O);
+  updateUserPoint(T, A, O);
+}
+
 function addEventListeners(){
   document.getElementById('computeBtn').addEventListener('click', compute);
   document.getElementById('clearBtn').addEventListener('click', clearAll);
@@ -776,6 +828,12 @@ function addEventListeners(){
   wireTrendUI();
   applyColors();
   addEventListeners();
+  
+  // Check for query parameters and apply them
+  const queryValues = parseQueryParams();
+  if (queryValues.T !== null || queryValues.A !== null || queryValues.O !== null) {
+    updateResultsFromValues(queryValues.T, queryValues.A, queryValues.O);
+  }
 })();
 </script>
 </body>

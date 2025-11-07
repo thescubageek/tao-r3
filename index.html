@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TAO‑R³ • MVP with Traditions Plot</title>
+<style>
+  :root {
+    --bg: #0e111a; --panel: #141825; --ink: #e9ecf6; --muted: #9aa7c7;
+    --accent: #6cc6ff; --accent2: #6ee7a2; --warn: #ffb86b; --danger: #ff7b7b; --outline: rgba(255,255,255,.12);
+    --header-h: 60px;
+  }
+  [data-theme="light"] { --bg:#f6f8ff; --panel:#fff; --ink:#111629; --muted:#4a5877; --outline:rgba(0,0,0,.1); }
+  * { box-sizing: border-box; }
+  html { height: 100%; overflow: hidden; }
+  body { margin:0; color:var(--ink); background:var(--bg); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; height: 100%; overflow: hidden; }
+  header { position:fixed; top:0; left:0; display: flex; align-items: center;z-index:2; background:linear-gradient(180deg, rgba(255,255,255,.06), transparent), var(--panel); border-bottom:1px solid var(--outline); padding:12px 16px; }
+  .row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  h1 { margin:0; font-size:18px; letter-spacing:.3px; }
+  .muted{ color:var(--muted); font-size:13px; }
+  main { display:grid; grid-template-columns:420px 1fr; gap:16px; padding:16px; margin-top: calc(var(--header-h) + 32px); height: calc(100vh - var(--header-h) - 32px); }
+  @media (max-width: 980px) { main { grid-template-columns: 1fr; } }
+  .card { background:var(--panel); border:1px solid var(--outline); border-radius:12px; padding:14px; box-shadow:0 8px 24px rgba(0,0,0,.12); }
+  main > .card { min-height: 0; }
+  .card.scroll{ overflow: auto; }
+  .card.chart-card{ /* no overflow; just fills available height */ }
+  canvas{ width: 100%; height: 100%; background: #0a0d18; border-radius: 12px; display: block; }
+  .title { font-weight:800; margin:0 0 10px; }
+  fieldset { border:none; margin:0 0 10px; padding:0; }
+  legend { font-weight:700; margin-bottom:6px; }
+  .item { margin:8px 0 10px; padding:0 0 8px; border-bottom:1px dashed var(--outline); }
+  .item:last-child{ border-bottom:0; }
+  .qtext{ margin:0 0 6px; }
+  .scale{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
+  input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
+  .scale label{ display:inline-block; text-align:center; padding:8px 0; border:1px solid var(--outline); border-radius:8px; cursor:pointer; color:var(--muted); }
+  input[type="radio"]:checked + label{ color:var(--ink); border-color:var(--accent); background:linear-gradient(180deg, rgba(108,198,255,.12), transparent); font-weight:700; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px; }
+  button { appearance:none; border:1px solid var(--outline); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.02)); color:var(--ink); padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700; }
+  .results { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px; }
+  .pill{ background:transparent; border:1px solid var(--outline); border-radius:10px; padding:10px; text-align:center; }
+  .big{ font-size:28px; font-weight:900; }
+  .mini{ font-size:12px; color:var(--muted); margin-top:2px; }
+  .legend { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px; margin-top:8px; color:var(--muted); font-size:12px; }
+  canvas{ width:100%; height:520px; background:#0a0d18; border-radius:12px; display:block; }
+  [data-theme="light"] canvas{ background:#f2f6ff; }
+  .typeBox{ margin-top:10px; padding:10px; border:1px solid var(--outline); border-radius:10px; }
+  .sidebar { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  .tooltip { position: fixed; pointer-events:none; background: rgba(0,0,0,.8); color:#fff; padding:6px 8px; border-radius:6px; font-size:12px; transform: translate(-50%, calc(-100% - 10px)); white-space:nowrap; z-index: 10; display: none; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="row">
+    <h1>TAO‑R³ • MVP + Traditions</h1>
+    <span class="muted">Questionnaire + your point + reference traditions plotted</span>
+    <button id="themeBtn">Toggle Theme</button>
+    <label class="muted" style="margin-left:12px;">
+      Color by:
+      <select id="colorMode">
+        <option value="category">Category</option>
+        <option value="time">Time</option>
+        <option value="T">T axis</option>
+        <option value="A">A axis</option>
+        <option value="O">O axis</option>
+      </select>
+    </label>
+
+    <span class="muted" style="margin-left:12px;">Year:</span>
+    <input id="yearRange" type="range" min="-1200" max="2025" value="2025" step="10" style="width:220px; vertical-align:middle;">
+    <span id="yearLabel" class="muted" style="min-width:62px; display:inline-block;">≤ 2025</span>
+    <br>
+    <label class="muted" style="margin-left:12px;">
+      Trend ribbons
+      <input id="trendToggle" type="checkbox" style="vertical-align:middle;">
+    </label>
+
+    <label class="muted" style="margin-left:8px;">
+      Trend axis
+      <select id="trendAxis">
+        <option value="T">T</option>
+        <option value="A">A</option>
+        <option value="O">O</option>
+      </select>
+    </label>
+
+    <label class="muted" style="margin-left:8px;">
+      Trend source
+      <select id="trendSource">
+        <option value="both">Both layers</option>
+        <option value="traditions">Traditions only</option>
+        <option value="figures">Figures only</option>
+      </select>
+    </label>
+    <a href="traditions.csv" download class="muted" style="margin-left:auto">Download CSV</a>
+  </div>
+</header>
+
+<main>
+  <section class="card scroll">
+    <h2 class="title">Your Responses</h2>
+    <form id="taoForm">
+      <fieldset>
+        <legend>Temporal Orientation (T)</legend>
+        <p class="muted">1 = Strongly disagree… 7 = Strongly agree</p>
+        <div class="item"><p class="qtext">T1. History has a direction; humanity is moving toward a goal.</p><div class="scale" data-key="T1"></div></div>
+        <div class="item"><p class="qtext">T2. The same kinds of events repeat in new forms across eras.</p><div class="scale" data-key="T2"></div></div>
+        <div class="item"><p class="qtext">T3. I feel time as a series of discrete steps and milestones.</p><div class="scale" data-key="T3"></div></div>
+        <div class="item"><p class="qtext">T4. Meaning is found by returning to foundational patterns and renewing them.</p><div class="scale" data-key="T4"></div></div>
+        <div class="item"><p class="qtext">T5. My past, present, and future feel like one continuous flow.</p><div class="scale" data-key="T5"></div></div>
+        <div class="item"><p class="qtext">T6. I plan life as a straight line toward clear endpoints.</p><div class="scale" data-key="T6"></div></div>
+        <div class="item"><p class="qtext">T7. What goes around comes around—even across generations.</p><div class="scale" data-key="T7"></div></div>
+        <div class="item"><p class="qtext">T8. I experience change more as rhythm than as progress.</p><div class="scale" data-key="T8"></div></div>
+        <div class="item"><p class="qtext">T9. Apocalyptic or utopian endpoints make sense to me.</p><div class="scale" data-key="T9"></div></div>
+        <div class="item"><p class="qtext">T10. I prefer cycles (seasons, rituals) to one-off culminations.</p><div class="scale" data-key="T10"></div></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Agency Orientation (A)</legend>
+        <p class="muted">1 = Strongly disagree… 7 = Strongly agree</p>
+        <div class="item"><p class="qtext">A1. With enough will and effort, I can redirect my life at any time.</p><div class="scale" data-key="A1"></div></div>
+        <div class="item"><p class="qtext">A2. Larger forces (fate, luck, structure) limit what individuals can change.</p><div class="scale" data-key="A2"></div></div>
+        <div class="item"><p class="qtext">A3. My choices meaningfully alter future outcomes for me and others.</p><div class="scale" data-key="A3"></div></div>
+        <div class="item"><p class="qtext">A4. People mostly enact roles laid out by their circumstances.</p><div class="scale" data-key="A4"></div></div>
+        <div class="item"><p class="qtext">A5. Agency is not just individual—it emerges when people and environments align.</p><div class="scale" data-key="A5"></div></div>
+        <div class="item"><p class="qtext">A6. Moral responsibility rests primarily on individual decisions.</p><div class="scale" data-key="A6"></div></div>
+        <div class="item"><p class="qtext">A7. I often sense I’m being carried by currents I didn’t choose.</p><div class="scale" data-key="A7"></div></div>
+        <div class="item"><p class="qtext">A8. Good systems reduce how much sheer willpower is needed.</p><div class="scale" data-key="A8"></div></div>
+        <div class="item"><p class="qtext">A9. Ultimately, someone has to choose; diffusion of responsibility is a trap.</p><div class="scale" data-key="A9"></div></div>
+        <div class="item"><p class="qtext">A10. Sometimes the most effective action is non-forcing (letting the system re-balance).</p><div class="scale" data-key="A10"></div></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ontological Continuity (O)</legend>
+        <p class="muted">1 = Strongly disagree… 7 = Strongly agree</p>
+        <div class="item"><p class="qtext">O1. There is a reality beyond nature that grounds truth and value.</p><div class="scale" data-key="O1"></div></div>
+        <div class="item"><p class="qtext">O2. The sacred is found within the fabric of ordinary life and relations.</p><div class="scale" data-key="O2"></div></div>
+        <div class="item"><p class="qtext">O3. The highest good comes from aligning with a transcendent order.</p><div class="scale" data-key="O3"></div></div>
+        <div class="item"><p class="qtext">O4. Dividing “spiritual” from “material” usually causes confusion.</p><div class="scale" data-key="O4"></div></div>
+        <div class="item"><p class="qtext">O5. I feel most connected when boundaries between self, others, and world soften.</p><div class="scale" data-key="O5"></div></div>
+        <div class="item"><p class="qtext">O6. Moral authority ultimately descends from outside the human world.</p><div class="scale" data-key="O6"></div></div>
+        <div class="item"><p class="qtext">O7. Nature itself is the primary locus of meaning and value.</p><div class="scale" data-key="O7"></div></div>
+        <div class="item"><p class="qtext">O8. Mystical union or non-duality points to something real.</p><div class="scale" data-key="O8"></div></div>
+        <div class="item"><p class="qtext">O9. Human purpose is to obey or serve what stands above the world.</p><div class="scale" data-key="O9"></div></div>
+        <div class="item"><p class="qtext">O10. Right relationship (with people, land, systems) is more basic than doctrine.</p><div class="scale" data-key="O10"></div></div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="button" id="computeBtn">Compute</button>
+        <button type="button" id="clearBtn">Clear</button>
+        <button type="button" id="saveBtn" title="Download your responses as JSON">Save JSON</button>
+        <button type="button" id="csvBtn" title="Download T/A/O scores as CSV">Export CSV</button>
+        <button type="button" id="shareBtn" title="Copy a shareable URL with your answers encoded">Share Link</button>
+        <button type="button" id="printBtn" title="Print a one-page report">Print</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="card scroll">
+    <h2 class="title">Results + Reference Points</h2>
+    <div class="results">
+      <div class="pill"><div class="mini">T (Temporal)</div><div class="big" id="Tscore">—</div><div class="mini" id="Tlabel"></div></div>
+      <div class="pill"><div class="mini">A (Agency)</div><div class="big" id="Ascore">—</div><div class="mini" id="Alabel"></div></div>
+      <div class="pill"><div class="mini">O (Ontology)</div><div class="big" id="Oscore">—</div><div class="mini" id="Olabel"></div></div>
+    </div>
+    <div class="typeBox">
+      <div class="mini">Type (octant)</div>
+      <div id="typeLabel" style="font-weight:800;margin-top:4px">—</div>
+      <div class="mini" id="kvs"></div>
+    </div>
+    <div style="margin-top:10px; position: relative;">
+      <canvas id="plot3d" aria-label="3D TAO scatter"></canvas>
+      <div class="legend">
+        <div style="color: #6cc6ff"><b>T axis:</b> −1 Linear ↔ +1 Cyclical</div>
+        <div style="color: #6ee7a2"><b>A axis:</b> −1 Deterministic ↔ +1 Volitional/Participatory</div>
+        <div style="color: #ffb86b"><b>O axis:</b> −1 Transcendent/Dualistic ↔ +1 Immanent/Relational</div>
+        <div>Drag to rotate · Scroll to zoom · Double‑click to re‑center · Click a point for details</div>
+      </div>
+      <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+    </div>
+
+     <table>
+      <tr><strong>Legend:</strong></tr>
+      <tr><td>Religion</td><td><span class="dot" style="background:#6cc6ff"></span></td></tr>
+      <tr><td>Philosophy</td><td><span class="dot" style="background:#6ee7a2"></span></td></tr>
+      <tr><td>Mysticism</td><td><span class="dot" style="background:#ffb86b"></span></td></tr>
+      <tr><td>Modern</td><td><span class="dot" style="background:#ff7b7b"></span></td></tr>
+      <tr><td>Politics/Leaders</td><td><span class="dot" style="background:#c792ea"></span></td></tr>
+      <tr><td>Science/Other</td><td><span class="dot" style="background:#f2cc60"></span></td></tr>
+      <tr>
+        <label style="margin-left:12px; cursor:pointer;">
+          <input id="toggleTraditions" type="checkbox" checked style="vertical-align:middle; margin-right:6px;">
+          Show traditions
+        </label>
+      </tr>
+      <tr>
+        <label style="margin-left:10px; cursor:pointer;">
+          <input id="toggleFigures" type="checkbox" checked style="vertical-align:middle; margin-right:6px;">
+          Show figures
+        </label>
+      </tr>
+    </table>
+  </section>
+</main>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* Build Likert scales */
+(function buildScales() {
+  document.querySelectorAll('.scale').forEach(sc => {
+    const key = sc.dataset.key;
+    for (let v = 1; v <= 7; v++) {
+      const id = key + '_' + v;
+      const input = document.createElement('input'); input.type='radio'; input.name=key; input.id=id; input.value=String(v);
+      const label = document.createElement('label'); label.htmlFor=id; label.textContent=v;
+      sc.appendChild(input); sc.appendChild(label);
+    }
+  });
+})();
+
+/* Scoring */
+const T_reverse = new Set(['T1','T3','T6','T9']);
+const A_reverse = new Set(['A2','A4','A7']);
+const O_reverse = new Set(['O1','O3','O6','O9']);
+const AXES = {
+  T:{items:['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10'], reverse:T_reverse},
+  A:{items:['A1','A2','A3','A4','A5','A6','A7','A8','A9','A10'], reverse:A_reverse},
+  O:{items:['O1','O2','O3','O4','O5','O6','O7','O8','O9','O10'], reverse:O_reverse}
+};
+
+const CSV_TRADITIONS = `
+name,category,T,A,O,year,notes
+Judaism (Biblical),religion,-0.85,0.4,-0.8,-1000,Linear covenant; divine law; transcendent Yahweh.
+Judaism (Rabbinic),religion,-0.8,0.4,-0.7,200,Halakhic continuity; ethical law; transcendence.
+Kabbalah (Jewish Mysticism),mysticism,0.0,0.0,0.9,1200,Ein Sof; sefirot; emanation.
+Hasidic Judaism,religion,-0.8,0.5,-0.6,1750,Joyful devotion; immanence via mitzvot.
+Reform Judaism,modern,-0.6,0.6,-0.4,1850,Ethical monotheism; modern adaptation.
+Reconstructionist Judaism,modern,-0.5,0.7,-0.3,1930,Evolving civilization; communal immanence.
+Christianity (Catholic),religion,-0.8,0.5,-0.6,100,Grace/sacraments; transcendence.
+Christianity (Orthodox),religion,-0.8,0.5,-0.4,400,Theosis; mystical union.
+Christianity (Mainline Protestant),religion,-0.7,0.6,-0.5,1550,Teleology + ethics; balanced agency.
+Christianity (Evangelical),religion,-0.85,0.8,-0.7,1750,Conversional agency; divine plan.
+Christianity (Pentecostal),religion,-0.8,0.9,-0.6,1906,Spirit-led agency; miracles.
+Christianity (Reformed/Calvinist),religion,-0.85,-0.3,-0.7,1550,Predestination; sovereignty.
+Christian Mysticism,mysticism,0.0,0.0,1.0,1200,Union with God; apophatic path.
+Mormonism (LDS),religion,-0.7,0.6,0.1,1830,Restoration; exaltation; material–spiritual continuity.
+Islam (Sunni),religion,-0.8,0.5,-0.8,630,Prophetic history; sharia; transcendence.
+Islam (Shia),religion,-0.8,0.5,-0.8,680,Imamate; martyrdom.
+Islam (Sufi),mysticism,0.0,0.0,1.0,800,Fanā’/baqā’; unity mysticism.
+Islam (Ismaili),religion,-0.7,0.4,-0.6,760,Esoteric imamology.
+Islam (Salafi),religion,-0.85,0.3,-0.85,1740,Scripturalism; determinism.
+Islam (Ahmadiyya),religion,-0.75,0.6,-0.6,1889,Reformist; moderated transcendence.
+Zoroastrianism,religion,-0.8,0.5,-0.6,-1000,Cosmic dualism; Ahura Mazda.
+Manichaeism,religion,-0.7,0.4,-0.8,250,Eternal dualism; matter–spirit conflict.
+Gnosticism (classical),mysticism,-0.6,0.3,-0.9,150,Divine spark; gnosis.
+Hinduism (Vedanta-general),religion,0.7,0.0,0.8,-500,Cycles; dharma/karma; Brahman.
+Advaita Vedanta,mysticism,0.0,0.0,1.0,800,Non-dual realization.
+Hinduism (Bhakti),religion,0.5,0.6,0.5,1200,Devotion within cyclical order.
+Hinduism (Tantric),mysticism,0.4,0.7,0.3,900,Participatory ritual; sacred immanence.
+Sikhism,religion,0.4,0.5,0.2,1500,Naam; devotion + ethics.
+Jainism,religion,0.8,-0.4,0.7,-500,Karmic determinism; ascetic liberation.
+Buddhism (Theravada),religion,0.6,-0.2,0.8,-400,Rebirth; anatta.
+Buddhism (Mahayana),religion,0.4,0.1,0.95,100,Śūnyatā; non-duality.
+Buddhism (Vajrayana),mysticism,0.3,0.6,0.7,700,Tantric participation.
+Daoism (Taoism),religion,0.7,0.6,0.9,-400,Wu-wei; spontaneous order.
+Confucianism,philosophy,0.5,0.6,0.3,-500,Ritual harmony; relational virtue.
+Shinto,religion,0.7,0.5,0.9,700,Participatory rituals; kami.
+Indigenous Animism,religion,0.8,0.6,0.9,-10000,Reciprocity with land/spirits.
+Hermeticism,mysticism,0.3,0.7,0.0,200,As above so below; ascent.
+Neoplatonism,philosophy,-0.2,0.4,-0.6,250,Emanation from the One.
+Stoicism,philosophy,-0.2,0.6,0.4,-300,Fated logos; inner agency.
+Aristotelianism,philosophy,-0.3,0.5,0.3,-330,Natural teleology.
+Existentialism,philosophy,-0.5,0.8,0.2,1850,Radical freedom; immanent meaning.
+Nietzsche (Eternal Recurrence),philosophy,0.6,0.9,0.2,1885,Affirm recurrence; creative will.
+Marxist Materialism,modern,-0.6,-0.2,0.6,1848,Deterministic structures; immanent.
+Secular Humanism,modern,-0.6,0.7,0.7,1850,Progress; agency; immanent ethics.
+Enlightenment Rationalism,modern,-0.7,0.6,0.5,1700,Reason/rights; empirical order.
+Gaiaism / Deep Ecology,modern,0.6,0.5,0.95,1970,Planetary cycles; reciprocity.
+Transhumanism,modern,-0.5,0.9,0.1,1990,Technological will to transcend limits.
+Scientology,modern,-0.4,0.7,-0.2,1953,Auditing; thetan/body dualism.
+New Age / Pantheism,modern,0.5,0.5,0.9,1970,Holistic cycles; participatory agency.
+Bahá’í Faith,religion,-0.7,0.6,-0.5,1863,Progressive revelation; unity.
+Process Theology,philosophy,-0.4,0.7,0.5,1920,God as evolving process.
+Atheist Physicalism,modern,-0.7,-0.3,0.6,1770,Deterministic naturalism; immanent cosmos.
+Absurdism,philosophy,-0.6,0.6,0.1,1942,Meaning through revolt.
+Postmodern Relativism,modern,0.0,0.2,0.4,1970,Deconstruction of metanarratives.
+`.trim();
+
+const CSV_FIGURES = `
+name,category,T,A,O,year,notes
+Plato,philosophy,-0.4,0.4,-0.7,-380,Forms; ascent to the Good.
+Aristotle,philosophy,-0.3,0.5,0.3,-340,Immanent forms; teleology.
+Socrates,philosophy,-0.4,0.6,-0.4,-400,Moral inquiry; rational agency.
+Plotinus (Neoplatonism),philosophy,-0.2,0.4,-0.7,250,Emanation; mystical ascent.
+Augustine,theology,-0.8,0.5,-0.7,400,Grace; linear salvation.
+Aquinas,theology,-0.7,0.5,-0.6,1275,Scholastic synthesis; natural law.
+Luther,theology,-0.8,0.7,-0.7,1517,Justification by faith.
+Calvin,theology,-0.85,-0.3,-0.7,1550,Predestination; sovereignty.
+Spinoza,philosophy,0.0,0.6,0.8,1677,Substance monism; immanence.
+Descartes,philosophy,-0.6,0.7,-0.6,1640,Dualism; methodic doubt; will.
+Hobbes,philosophy,-0.6,0.5,0.2,1651,Mechanism; contract; immanence.
+Locke,philosophy,-0.6,0.7,0.4,1690,Empiricism; rights.
+Rousseau,philosophy,-0.5,0.7,0.2,1762,Natural goodness; general will.
+Hume,philosophy,-0.5,0.5,0.4,1740,Skepticism; habit.
+Kant,philosophy,-0.6,0.6,-0.3,1785,Transcendental idealism; duty.
+Hegel,philosophy,-0.6,0.6,-0.4,1820,Dialectical history.
+Marx,politics,-0.6,-0.2,0.6,1848,Historical materialism.
+Nietzsche,philosophy,0.6,0.9,0.2,1885,Eternal recurrence; will to power.
+Kierkegaard,philosophy,-0.7,0.8,-0.6,1843,Leap of faith; subjectivity.
+Sartre,philosophy,-0.5,0.9,0.2,1943,Radical freedom; immanent meaning.
+Camus,philosophy,-0.5,0.7,0.1,1942,Absurd; revolt.
+Foucault,philosophy,0.0,0.6,0.4,1975,Power/knowledge; genealogy.
+Derrida,philosophy,0.0,0.5,0.4,1967,Deconstruction; différance.
+Confucius,politics,0.5,0.6,0.3,-500,Ritual roles; harmony.
+Laozi,philosophy,0.7,0.6,0.9,-400,Wu-wei; immanent order.
+Zhuangzi,philosophy,0.7,0.7,0.9,-300,Spontaneity; perspectivism.
+Buddha (Gautama),religion,0.6,0.1,0.9,-500,Middle Way; cessation.
+Nāgārjuna,philosophy,0.4,0.1,0.95,200,Emptiness; two truths.
+Aśoka,politics,0.5,0.4,0.7,-250,Dhamma rule; moral governance.
+Shankara (Advaita),philosophy,0.0,0.0,1.0,800,Non-dual realization.
+Gandhi,politics,0.3,0.8,0.5,1930,Ahimsa; satyagraha.
+M. L. King Jr.,politics,-0.6,0.8,-0.5,1963,Prophetic justice; moral agency.
+Mandela,politics,-0.5,0.8,0.4,1994,Reconciliation; pragmatic agency.
+Washington,politics,-0.6,0.7,0.3,1789,Republican virtue.
+Jefferson,politics,-0.6,0.8,0.4,1776,Enlightenment republicanism.
+Napoleon,politics,-0.6,0.9,0.1,1804,Will to empire.
+Caesar,politics,-0.6,0.8,0.2,-49,Imperial consolidation.
+Francis Bacon,science,-0.6,0.7,0.5,1620,Experimental method.
+Newton,science,-0.6,0.7,-0.3,1687,Mathematical order; deistic tint.
+Darwin,science,-0.4,0.6,0.6,1859,Natural selection.
+Turing,science,-0.5,0.8,0.6,1936,Computability; mechanization of reason.
+Weber,politics,-0.6,0.6,0.3,1905,Rationalization; disenchantment.
+Maxwell (J. C.),science,-0.5,0.6,-0.2,1865,Field theory; orderly laws.
+Simone de Beauvoir,philosophy,-0.5,0.9,0.2,1949,Existential freedom; situated ethics.
+Heidegger,philosophy,0.0,0.5,0.4,1927,Being-in-the-world; historicity.
+`.trim();
+
+
+function getValue(name){ const el=document.querySelector(`input[name="${name}"]:checked`); if(!el) return null; const v=parseInt(el.value,10); return (isNaN(v)||v<1||v>7)?null:v; }
+function axisScore(axisKey){
+  const cfg=AXES[axisKey]; const vals=[];
+  for(const k of cfg.items){ const v=getValue(k); if(v==null) continue; vals.push(cfg.reverse.has(k)?(8-v):v); }
+  if(!vals.length) return null;
+  const mean=vals.reduce((a,b)=>a+b,0)/vals.length; return (mean-4)/3;
+}
+const fmt=x=>(x==null?'—':(Math.round(x*100)/100).toFixed(2));
+function labelFor(axis,val){ if(val==null) return ''; if(axis==='T') return val>=0?'Cyclical/Rhythmic':'Linear/Teleological'; if(axis==='A') return val>=0?'Volitional/Participatory':'Deterministic/Constrained'; if(axis==='O') return val>=0?'Immanent/Relational':'Transcendent/Dualistic'; }
+function typeOctant(t,a,o){ if([t,a,o].some(v=>v==null)) return 'Incomplete'; return `${t>=0?'Cyclical':'Linear'} • ${a>=0?'Volitional':'Deterministic'} • ${o>=0?'Immanent':'Transcendent'}`; }
+function kvSummary(t,a,o){ if([t,a,o].some(v=>v==null)) return ''; return `T=${fmt(t)} · A=${fmt(a)} · O=${fmt(o)}`; }
+
+/* 3D scene */
+let renderer, scene, camera, controls, userPoint, refGroupTraditions, refGroupFigures, trendGroup,raycaster, mouse, tooltip;
+function init3D(){
+  const canvas=document.getElementById('plot3d');
+  renderer=new THREE.WebGLRenderer({canvas, antialias:true});
+  size3D();
+  scene=new THREE.Scene();
+  scene.background = (document.documentElement.dataset.theme==='light')?new THREE.Color(0xf6f6ff):new THREE.Color(0x0a0d18);
+  camera=new THREE.PerspectiveCamera(50, canvas.clientWidth/canvas.clientHeight, .1, 100);
+  camera.position.set(2.8,2.2,2.8);
+  controls=new OrbitControls(camera, canvas); controls.enableDamping=true;
+
+  scene.add(new THREE.AmbientLight(0x88aaff,.5));
+  const dir=new THREE.DirectionalLight(0xffffff,.7); dir.position.set(2,3,4); scene.add(dir);
+
+  // Axes
+  const cT=0x6cc6ff, cA=0x6ee7a2, cO=0xffb86b;
+  function axis(a,b,color){ const g=new THREE.BufferGeometry().setFromPoints([a,b]); scene.add(new THREE.Line(g,new THREE.LineBasicMaterial({color}))); }
+  axis(new THREE.Vector3(-1,0,0), new THREE.Vector3(1,0,0), cT);
+  axis(new THREE.Vector3(0,-1,0), new THREE.Vector3(0,1,0), cA);
+  axis(new THREE.Vector3(0,0,-1), new THREE.Vector3(0,0,1), cO);
+
+  // Bounds + origin
+  scene.add(new THREE.Mesh(new THREE.BoxGeometry(2,2,2), new THREE.MeshBasicMaterial({color:0x334, wireframe:true, transparent:true, opacity:.25})));
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(.03,24,16), new THREE.MeshStandardMaterial({color:0x8892ff, emissive:0x111133})));
+
+  // User point
+  userPoint=new THREE.Mesh(new THREE.SphereGeometry(.06,32,24), new THREE.MeshStandardMaterial({color:0xffffff, emissive:0x8899aa, metalness:.2, roughness:.35}));
+  userPoint.visible=false; scene.add(userPoint);
+
+  // Reference groups
+  refGroupTraditions = new THREE.Group();
+  refGroupFigures = new THREE.Group();
+  trendGroup = new THREE.Group();
+  scene.add(refGroupTraditions);
+  scene.add(refGroupFigures);
+  scene.add(trendGroup);
+
+  // Toggles
+  const toggleTraditions = document.getElementById('toggleTraditions');
+  const toggleFigures    = document.getElementById('toggleFigures');
+
+  if (toggleTraditions) {
+    refGroupTraditions.visible = toggleTraditions.checked;
+    toggleTraditions.addEventListener('change', () => {
+      refGroupTraditions.visible = toggleTraditions.checked;
+      if (!toggleTraditions.checked) hideTooltip();
+    });
+  }
+  if (toggleFigures) {
+    refGroupFigures.visible = toggleFigures.checked;
+    toggleFigures.addEventListener('change', () => {
+      refGroupFigures.visible = toggleFigures.checked;
+      if (!toggleFigures.checked) hideTooltip();
+    });
+  }
+
+  // Picking
+  raycaster=new THREE.Raycaster(); mouse=new THREE.Vector2();
+  tooltip=document.getElementById('tooltip');
+  canvas.addEventListener('click', onClickCanvas);
+  window.addEventListener('resize', size3D);
+
+  animate();
+}
+function size3D(){ const c=renderer?.domElement||document.getElementById('plot3d'); const w=c.clientWidth, h=520; if(renderer){ renderer.setSize(w,h,false); if(camera){ camera.aspect=w/h; camera.updateProjectionMatrix(); } } else { c.width=w; c.height=h; } }
+function animate(){ requestAnimationFrame(animate); controls.update(); renderer.render(scene,camera); }
+function clamp(x){ return Math.max(-1, Math.min(1, x)); }
+function updateUserPoint(T,A,O){ if([T,A,O].some(v=>v==null)){ userPoint.visible=false; return; } userPoint.position.set(clamp(T), clamp(A), clamp(O)); userPoint.visible=true; }
+
+async function loadTraditions(){
+  const rows = parseCSV(CSV_TRADITIONS);
+  plotReferences(rows, refGroupTraditions);
+}
+
+async function loadFigures(){
+  const rows = parseCSV(CSV_FIGURES);
+  plotReferences(rows, refGroupFigures);
+}
+function parseCSV(text){
+  const lines = text.trim().split(/\r?\n/);
+  const header = lines.shift().split(',');
+  return lines.map(line => {
+    const cols = line.split(',');
+    const row = {}; header.forEach((h,i)=> row[h]=cols[i]);
+    row.T = parseFloat(row.T); row.A = parseFloat(row.A); row.O = parseFloat(row.O);
+    row.year = row.year !== undefined ? parseInt(row.year, 10) : NaN;
+    return row;
+  });
+}
+
+function lerp(a,b,t){ return a + (b - a) * t; }
+function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+
+function colorRamp01(t){ // 0..1 -> blue → purple → orange
+  const c1 = new THREE.Color(0x4ea7ff);
+  const c2 = new THREE.Color(0x9d7ce8);
+  const c3 = new THREE.Color(0xffb86b);
+  if (t < 0.5) return c1.lerp(c2, t*2);
+  return c2.lerp(c3, (t-0.5)*2);
+}
+
+function scalarToColor(x, min, max){
+  const t = clamp01((x - min) / (max - min));
+  return colorRamp01(t);
+}
+
+function axisColor(axisVal){ // axisVal in [-1,1]
+  return scalarToColor(axisVal, -1, 1);
+}
+
+function timeColor(year, minYear, maxYear){
+  return scalarToColor(year, minYear, maxYear);
+}
+
+function categoryColor(cat){
+  if(!cat) return new THREE.Color(0xffffff);
+  const c = cat.toLowerCase();
+  if (c==='religion')   return new THREE.Color(0x6cc6ff);
+  if (c==='philosophy') return new THREE.Color(0x6ee7a2);
+  if (c==='mysticism')  return new THREE.Color(0xffb86b);
+  if (c==='modern')     return new THREE.Color(0xff7b7b);
+  if (c==='politics'||c==='leaders') return new THREE.Color(0xc792ea);
+  if (c==='science'||c==='other')    return new THREE.Color(0xf2cc60);
+  return new THREE.Color(0xffffff);
+}
+
+function plotIntoGroup(rows, targetGroup){
+  // clear
+  for (let i = targetGroup.children.length - 1; i >= 0; i--) {
+    targetGroup.remove(targetGroup.children[i]);
+  }
+  rows.forEach(r => {
+    if (isNaN(r.T) || isNaN(r.A) || isNaN(r.O)) return;
+    const mat = new THREE.MeshStandardMaterial({
+      color: categoryColor(r.category),
+      emissive: 0x111111, roughness: .5, metalness: .1
+    });
+    const m = new THREE.Mesh(new THREE.SphereGeometry(.04, 20, 16), mat);
+    m.position.set(clamp(r.T), clamp(r.A), clamp(r.O));
+    m.userData = r;
+    targetGroup.add(m);
+  });
+}
+
+function plotReferences(rows, targetGroup){ plotIntoGroup(rows, targetGroup); }
+
+/* Tooltip via raycast */
+function onClickCanvas(ev){
+  const rect = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+
+  let candidates = [];
+  if (refGroupTraditions?.visible) candidates = candidates.concat(refGroupTraditions.children);
+  if (refGroupFigures?.visible)    candidates = candidates.concat(refGroupFigures.children);
+
+  if (!candidates.length) { hideTooltip(); return; }
+
+  const hits = raycaster.intersectObjects(candidates, false);
+  if (hits.length){
+    const hit = hits[0].object.userData;
+    showTooltip(ev.clientX, ev.clientY,
+      `${hit.name}<br/>T=${(+hit.T).toFixed(2)} · A=${(+hit.A).toFixed(2)} · O=${(+hit.O).toFixed(2)}<br/>` +
+      `<span style="opacity:.8">${hit.category}</span><br/><span style="opacity:.7">${hit.notes||''}</span>`
+    );
+  } else {
+    hideTooltip();
+  }
+}
+function showTooltip(x,y,html){
+  tooltip.style.display='block';
+  tooltip.style.left = x + 'px';
+  tooltip.style.top  = y + 'px';
+  tooltip.innerHTML = html;
+}
+function hideTooltip(){ tooltip.style.display='none'; }
+
+/* Theme & actions */
+function setTheme(mode){ document.documentElement.setAttribute('data-theme', mode); localStorage.setItem('tao_theme', mode); if(scene) scene.background=(mode==='light')?new THREE.Color(0xf6f6ff):new THREE.Color(0x0a0d18); }
+document.getElementById('themeBtn').addEventListener('click', ()=> setTheme((document.documentElement.getAttribute('data-theme')||'dark')==='dark'?'light':'dark'));
+
+function compute(){
+  const T=axisScore('T'), A=axisScore('A'), O=axisScore('O');
+  document.getElementById('Tscore').textContent=fmt(T);
+  document.getElementById('Ascore').textContent=fmt(A);
+  document.getElementById('Oscore').textContent=fmt(O);
+  document.getElementById('Tlabel').textContent=labelFor('T',T)||'';
+  document.getElementById('Alabel').textContent=labelFor('A',A)||'';
+  document.getElementById('Olabel').textContent=labelFor('O',O)||'';
+  document.getElementById('typeLabel').textContent=typeOctant(T,A,O);
+  document.getElementById('kvs').textContent=kvSummary(T,A,O);
+  updateUserPoint(T,A,O);
+}
+function clearAll(){
+  document.querySelectorAll('input[type="radio"]:checked').forEach(el=>el.checked=false);
+  ['Tscore','Ascore','Oscore','Tlabel','Alabel','Olabel','typeLabel','kvs'].forEach(id=>document.getElementById(id).textContent='—');
+  updateUserPoint(null,null,null); hideTooltip(); controls.reset(); camera.position.set(2.8,2.2,2.8);
+}
+function saveJSON(){
+  const data={}; document.querySelectorAll('.scale').forEach(sc=>{const key=sc.dataset.key; const el=document.querySelector(`input[name="${key}"]:checked`); if(el) data[key]=parseInt(el.value,10);});
+  const blob=new Blob([JSON.stringify({timestamp:new Date().toISOString(), answers:data},null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tao_r3_answers.json'; a.click(); URL.revokeObjectURL(a.href);
+}
+function exportCSV(){
+  const T=axisScore('T'),A=axisScore('A'),O=axisScore('O');
+  const csv='T_score,A_score,O_score,type\n'+[T,A,O,typeOctant(T,A,O)].join(',')+'\n';
+  const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tao_r3_scores.csv'; a.click(); URL.revokeObjectURL(a.href);
+}
+
+let allRows = []; // union of visible datasets
+let yearMin =  -10000, yearMax = 2025;
+
+function gatherAllRows(){
+  allRows = [];
+  if (refGroupTraditions?.children?.length){
+    refGroupTraditions.children.forEach(m=> allRows.push(m.userData));
+  }
+  if (refGroupFigures?.children?.length){
+    refGroupFigures.children.forEach(m=> allRows.push(m.userData));
+  }
+  const ys = allRows.map(r => r.year).filter(y => !Number.isNaN(y));
+  if (ys.length){ yearMin = Math.min(...ys); yearMax = Math.max(...ys); }
+}
+
+function applyColors(){
+  const mode = document.getElementById('colorMode')?.value || 'category';
+  const yrCut = parseInt(document.getElementById('yearRange')?.value||yearMax,10);
+
+  const recolorGroup = (group) => {
+    if (!group) return;
+    group.children.forEach(m => {
+      const r = m.userData;
+      // time filter: fade future points
+      const alive = Number.isNaN(r.year) || r.year <= yrCut;
+      m.visible = alive;
+
+      let col;
+      if (mode==='category') col = categoryColor(r.category);
+      else if (mode==='time' && !Number.isNaN(r.year)) col = timeColor(r.year, yearMin, yearMax);
+      else if (mode==='T') col = axisColor(r.T);
+      else if (mode==='A') col = axisColor(r.A);
+      else if (mode==='O') col = axisColor(r.O);
+      else col = categoryColor(r.category);
+
+      m.material.color.copy(col);
+    });
+  };
+
+  recolorGroup(refGroupTraditions);
+  recolorGroup(refGroupFigures);
+  updateTrends();
+}
+
+function visibleMarkersFrom(group){
+  return (group?.children || []).filter(m => m.visible);
+}
+
+// Robust median (ignores NaN)
+function median(arr){
+  const a = arr.filter(x => Number.isFinite(x)).sort((x,y)=>x-y);
+  if (!a.length) return NaN;
+  const mid = Math.floor(a.length/2);
+  return a.length % 2 ? a[mid] : (a[mid-1]+a[mid])/2;
+}
+
+function buildBinMedians(markers, axisKey='O', bins=8, minPerBin=3){
+  if (!markers.length) return [];
+  // choose param axis
+  const getAxisVal = (m, key) => (key==='T'?m.userData.T:(key==='A'?m.userData.A:m.userData.O));
+  const minV=-1, maxV=1, step=(maxV-minV)/bins;
+  const binsArr = Array.from({length: bins}, () => []);
+
+  markers.forEach(m => {
+    const t = getAxisVal(m, axisKey);
+    if (!Number.isFinite(t)) return;
+    let idx = Math.floor((t-minV)/step);
+    if (idx<0) idx=0; if (idx>=bins) idx=bins-1;
+    binsArr[idx].push(m);
+  });
+
+  // For each bin: median of the *other two* axes + bin-center on axisKey
+  const centers = [];
+  binsArr.forEach((bucket, i) => {
+    if (bucket.length < minPerBin) return;
+    const valsT = bucket.map(m => m.userData.T);
+    const valsA = bucket.map(m => m.userData.A);
+    const valsO = bucket.map(m => m.userData.O);
+
+    const centerVal = minV + (i+0.5)*step;
+    let Tm = median(valsT), Am = median(valsA), Om = median(valsO);
+
+    // Force the param axis to the bin center to create a monotone trace
+    if (axisKey==='T') Tm = centerVal;
+    if (axisKey==='A') Am = centerVal;
+    if (axisKey==='O') Om = centerVal;
+
+    if ([Tm,Am,Om].every(Number.isFinite)){
+      centers.push(new THREE.Vector3(Tm, Am, Om));
+    }
+  });
+
+  // Need at least 4 points for a nice curve
+  return centers.length >= 4 ? centers : [];
+}
+
+function curveToTube(curvePoints, colorStart=0x4ea7ff, colorEnd=0xffb86b){
+  const curve = new THREE.CatmullRomCurve3(curvePoints, false, 'centripetal'); // avoids loops
+  const tubularSegments = 200;
+  const radius = 0.02; // skinny ribbon/tube
+  const radialSegments = 8;
+  const closed = false;
+
+  const geom = new THREE.TubeGeometry(curve, tubularSegments, radius, radialSegments, closed);
+
+  // Vertex color gradient along length (s parameter 0..1)
+  const pos = geom.attributes.position;
+  const colors = new Float32Array(pos.count * 3);
+  const c1 = new THREE.Color(colorStart);
+  const c2 = new THREE.Color(colorEnd);
+  for (let i=0;i<pos.count;i++){
+    const u = (i / (pos.count-1));
+    const c = c1.clone().lerp(c2, u);
+    colors[i*3+0] = c.r;
+    colors[i*3+1] = c.g;
+    colors[i*3+2] = c.b;
+  }
+  geom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  const mat = new THREE.MeshBasicMaterial({
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.55,
+    depthWrite: false
+  });
+
+  const mesh = new THREE.Mesh(geom, mat);
+  mesh.renderOrder = 1; // slightly on top of points
+  return mesh;
+}
+
+function clearTrends(){
+  for (let i = trendGroup.children.length - 1; i >= 0; i--){
+    trendGroup.remove(trendGroup.children[i]);
+  }
+}
+
+function updateTrends(){
+  const toggle = document.getElementById('trendToggle');
+  if (!toggle || !toggle.checked){ clearTrends(); return; }
+
+  const axis   = (document.getElementById('trendAxis')?.value) || 'O';
+  const source = (document.getElementById('trendSource')?.value) || 'both';
+
+  clearTrends();
+
+  const sets = [];
+  if (source==='both' || source==='traditions') sets.push({group: refGroupTraditions, color1:0x6cc6ff, color2:0x6ee7a2});
+  if (source==='both' || source==='figures')    sets.push({group: refGroupFigures,    color1:0xc792ea, color2:0xffb86b});
+
+  sets.forEach(s => {
+    const vis = visibleMarkersFrom(s.group);
+    const centers = buildBinMedians(vis, axis, /*bins*/ 10, /*minPerBin*/ 3);
+    if (centers.length >= 4){
+      const mesh = curveToTube(centers, s.color1, s.color2);
+      trendGroup.add(mesh);
+    }
+    // If we didn't get enough centers, we intentionally draw nothing.
+  });
+}
+
+
+function wireGradientUI(){
+  const colorMode   = document.getElementById('colorMode');
+  const yearRange   = document.getElementById('yearRange');
+  const yearLabel   = document.getElementById('yearLabel');
+
+  const updateYearLabel = () => { yearLabel.textContent = `≤ ${yearRange.value}`; };
+
+  if (colorMode){
+    colorMode.addEventListener('change', applyColors);
+  }
+  if (yearRange){
+    yearRange.addEventListener('input', ()=>{ updateYearLabel(); applyColors(); });
+    updateYearLabel();
+  }
+}
+
+function wireTrendUI(){
+  const trendToggle = document.getElementById('trendToggle');
+  const trendAxis   = document.getElementById('trendAxis');
+  const trendSource = document.getElementById('trendSource');
+  const update = () => { updateTrends(); };
+  [trendToggle, trendAxis, trendSource].forEach(el => el && el.addEventListener('change', update));
+}
+
+function addEventListeners(){
+  document.getElementById('computeBtn').addEventListener('click', compute);
+  document.getElementById('clearBtn').addEventListener('click', clearAll);
+  document.getElementById('saveBtn').addEventListener('click', saveJSON);
+  document.getElementById('csvBtn').addEventListener('click', exportCSV);
+  document.getElementById('shareBtn').addEventListener('click', ()=>{ /* optional future: encode answers in URL */ alert('Share coming soon.'); });
+  document.getElementById('printBtn').addEventListener('click', ()=>window.print());
+}
+
+/* Init */
+(function init(){
+  setTheme(localStorage.getItem('tao_theme')||'dark');
+  init3D();
+  loadTraditions();
+  loadFigures();
+  gatherAllRows();
+  wireGradientUI();
+  wireTrendUI();
+  applyColors();
+  addEventListeners();
+})();
+</script>
+</body>
+</html>

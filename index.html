@@ -641,7 +641,7 @@ function init3D(){
   scene=new THREE.Scene();
   scene.background = (document.documentElement.dataset.theme==='light')?new THREE.Color(0xf6f6ff):new THREE.Color(0x0a0d18);
   camera=new THREE.PerspectiveCamera(50, canvas.clientWidth/canvas.clientHeight, .1, 100);
-  camera.position.set(2.8,2.2,2.8);
+  camera.position.set(1.8,1.4,1.8);
   controls=new OrbitControls(camera, canvas); controls.enableDamping=true;
 
   scene.add(new THREE.AmbientLight(0x88aaff,.5));
@@ -696,32 +696,43 @@ function init3D(){
   function createAxisLabel(text, position, color) {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
-    canvas.width = 64;
+    canvas.width = 256;
     canvas.height = 64;
     
     context.fillStyle = `#${color.toString(16).padStart(6, '0')}`;
-    context.font = 'bold 48px Arial';
+    context.font = 'bold 32px Arial';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
-    context.fillText(text, 32, 32);
+    context.fillText(text, 128, 32);
     
     const texture = new THREE.CanvasTexture(canvas);
     const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
     const sprite = new THREE.Sprite(spriteMaterial);
     sprite.position.copy(position);
-    sprite.scale.set(0.2, 0.2, 1);
+    sprite.scale.set(0.6, 0.15, 1);
     
     return sprite;
   }
   
-  // Add labels at the tips of the arrows
-  const tLabel = createAxisLabel('T', new THREE.Vector3(1.1, 0, 0), cT);
-  const aLabel = createAxisLabel('A', new THREE.Vector3(0, 1.1, 0), cA);
-  const oLabel = createAxisLabel('O', new THREE.Vector3(0, 0, 1.1), cO);
+  // Add labels at both ends of each axis
+  // T axis (Transcendence): Linear vs Cyclical
+  const tPosLabel = createAxisLabel('Linear', new THREE.Vector3(1.15, 0, 0), cT);
+  const tNegLabel = createAxisLabel('Cyclical', new THREE.Vector3(-1.15, 0, 0), cT);
   
-  scene.add(tLabel);
-  scene.add(aLabel);
-  scene.add(oLabel);
+  // A axis (Agency): Volitional vs Deterministic  
+  const aPosLabel = createAxisLabel('Volitional', new THREE.Vector3(0, 1.15, 0), cA);
+  const aNegLabel = createAxisLabel('Deterministic', new THREE.Vector3(0, -1.15, 0), cA);
+  
+  // O axis (Order): Immanent vs Transcendent
+  const oPosLabel = createAxisLabel('Immanent', new THREE.Vector3(0, 0, 1.15), cO);
+  const oNegLabel = createAxisLabel('Transcendent', new THREE.Vector3(0, 0, -1.15), cO);
+  
+  scene.add(tPosLabel);
+  scene.add(tNegLabel);
+  scene.add(aPosLabel);
+  scene.add(aNegLabel);
+  scene.add(oPosLabel);
+  scene.add(oNegLabel);
 
   // Bounds + origin
   scene.add(new THREE.Mesh(new THREE.BoxGeometry(2,2,2), new THREE.MeshBasicMaterial({color:0x334, wireframe:true, transparent:true, opacity:.25})));
@@ -897,7 +908,7 @@ function compute(){
 function clearAll(){
   document.querySelectorAll('input[type="radio"]:checked').forEach(el=>el.checked=false);
   ['Tscore','Ascore','Oscore','Tlabel','Alabel','Olabel','typeLabel','kvs'].forEach(id=>document.getElementById(id).textContent='—');
-  updateUserPoint(null,null,null); hideTooltip(); controls.reset(); camera.position.set(2.8,2.2,2.8);
+  updateUserPoint(null,null,null); hideTooltip(); controls.reset(); camera.position.set(1.8,1.4,1.8);
 }
 function saveJSON(){
   const data={}; document.querySelectorAll('.scale').forEach(sc=>{const key=sc.dataset.key; const el=document.querySelector(`input[name="${key}"]:checked`); if(el) data[key]=parseInt(el.value,10);});

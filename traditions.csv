@@ -1,0 +1,78 @@
+name,category,tradition,subtype,T,A,O,year,notes
+Judaism (Biblical),religion,Judaism,Biblical,-0.85,0.4,-0.8,-1000,Linear covenant; divine law; transcendent Yahweh.
+Judaism (Rabbinic),religion,Judaism,Rabbinic,-0.8,0.4,-0.7,200,Halakhic continuity; ethical law; transcendence.
+Kabbalah (Jewish Mysticism),mysticism,Judaism,Kabbalah,0.0,0.0,0.9,1200,Ein Sof; sefirot; emanation.
+Hasidic Judaism,religion,Judaism,Hasidic,-0.8,0.5,-0.6,1750,Joyful devotion; immanence via mitzvot.
+Reform Judaism,modern,Judaism,Reform,-0.6,0.6,-0.4,1850,Ethical monotheism; modern adaptation.
+Reconstructionist Judaism,modern,Judaism,Reconstructionist,-0.5,0.7,-0.3,1930,Evolving civilization; communal immanence.
+Christianity (Catholic),religion,Christianity,Catholic,-0.8,0.5,-0.6,100,Grace/sacraments; transcendence.
+Christianity (Orthodox),religion,Christianity,Orthodox,-0.8,0.5,-0.4,400,Theosis; mystical union.
+Christianity (Mainline Protestant),religion,Christianity,Mainline Protestant,-0.7,0.6,-0.5,1550,Teleology + ethics; balanced agency.
+Christianity (Evangelical),religion,Christianity,Evangelical,-0.85,0.8,-0.7,1750,Conversional agency; divine plan.
+Christianity (Pentecostal),religion,Christianity,Pentecostal,-0.8,0.9,-0.6,1906,Spirit-led agency; miracles.
+Christianity (Reformed/Calvinist),religion,Christianity,Reformed/Calvinist,-0.85,-0.3,-0.7,1550,Predestination; sovereignty.
+Christianity (Liberation),religion,Christianity,Liberation,-0.4,0.8,-0.1,1970,Latin American liberation theology; praxis of the poor; God in history and justice.
+Christian Mysticism,mysticism,Christianity,Mysticism,0.0,0.0,1.0,1200,Union with God; apophatic path.
+Mormonism (LDS),religion,Christianity,LDS,-0.7,0.6,0.1,1830,Restoration; exaltation; material–spiritual continuity.
+Islam (Sunni),religion,Islam,Sunni,-0.8,0.5,-0.8,630,Prophetic history; sharia; transcendence.
+Islam (Shia),religion,Islam,Shia,-0.8,0.5,-0.8,680,Imamate; martyrdom.
+Islam (Sufi),mysticism,Islam,Sufi,0.0,0.0,1.0,800,Fanā’/baqā’; unity mysticism.
+Islam (Ismaili),religion,Islam,Ismaili,-0.7,0.4,-0.6,760,Esoteric imamology.
+Islam (Salafi),religion,Islam,Salafi,-0.85,0.3,-0.85,1740,Scripturalism; determinism.
+Islam (Ahmadiyya),religion,Islam,Ahmadiyya,-0.75,0.6,-0.6,1889,Reformist; moderated transcendence.
+Zoroastrianism,religion,Zoroastrianism,Classical,-0.8,0.5,-0.6,-1000,Cosmic dualism; Ahura Mazda.
+Manichaeism,religion,Manichaeism,Classical,-0.7,0.4,-0.8,250,Eternal dualism; matter–spirit conflict.
+Gnosticism (classical),mysticism,Gnosticism,Classical,-0.6,0.3,-0.9,150,Divine spark; gnosis.
+Hinduism (Vedanta-general),religion,Hinduism,Vedanta (General),0.7,0.0,0.8,-500,Cycles; dharma/karma; Brahman.
+Advaita Vedanta,mysticism,Hinduism,Advaita Vedanta,0.0,0.0,1.0,800,Non-dual realization.
+Hinduism (Bhakti),religion,Hinduism,Bhakti,0.5,0.6,0.5,1200,Devotion within cyclical order.
+Hinduism (Tantric),mysticism,Hinduism,Tantric,0.4,0.7,0.3,900,Participatory ritual; sacred immanence.
+Sikhism,religion,Sikhism,Main,0.4,0.5,0.2,1500,Naam; devotion + ethics.
+Jainism,religion,Jainism,Main,0.8,-0.4,0.7,-500,Karmic determinism; ascetic liberation.
+Buddhism (Theravada),religion,Buddhism,Theravada,0.6,-0.2,0.8,-400,Rebirth; anatta.
+Buddhism (Mahayana),religion,Buddhism,Mahayana,0.4,0.1,0.95,100,Śūnyatā; non-duality.
+Buddhism (Vajrayana),mysticism,Buddhism,Vajrayana,0.3,0.6,0.7,700,Tantric participation.
+Buddhism (Zen/Chan),mysticism,Buddhism,Zen,0.4,0.6,0.95,650,Direct pointing to mind; non-dual practice (Chan→Zen); meditation-centric realization.
+Buddhism (Pure Land),religion,Buddhism,Pure Land,0.5,0.2,-0.2,1200,Other-power faith in Amitābha; chanting/nembutsu; accessible path for laity.
+Buddhism (Tiantai),religion,Buddhism,Tiantai,0.5,0.5,0.85,600,Threefold truth synthesis; contemplation frameworks; Chinese scholastic integration.
+Buddhism (Tendai),religion,Buddhism,Tendai,0.5,0.5,0.85,805,Japanese Tiantai; inclusive synthesis of ethics/meditation/esotericism.
+Buddhism (Shingon),mysticism,Buddhism,Shingon,0.4,0.6,0.9,820,Esoteric mantra/mandala body of Buddha; ritual realization; immanent sacred.
+Buddhism (Nichiren),religion,Buddhism,Nichiren,0.5,0.8,0.5,1260,Lotus Sutra exclusivism; daimoku chanting; world-transforming agency.
+Daoism (Taoism),religion,Daoism,Classical,0.7,0.6,0.9,-400,Wu-wei; spontaneous order.
+Confucianism,philosophy,Confucianism,Classical,0.5,0.6,0.3,-500,Ritual harmony; relational virtue.
+Shinto,religion,Shinto,Classical,0.7,0.5,0.9,700,Participatory rituals; kami.
+Indigenous Animism,religion,Indigenous,Animism,0.8,0.6,0.9,-10000,Reciprocity with land/spirits.
+Hermeticism,mysticism,Esoteric,Hermeticism,0.3,0.7,0.0,200,As above so below; ascent.
+Neoplatonism,philosophy,Hellenic,Neoplatonism,-0.2,0.4,-0.6,250,Emanation from the One.
+Stoicism,philosophy,Hellenic,Stoicism,-0.2,0.6,0.4,-300,Fated logos; inner agency.
+Aristotelianism,philosophy,Hellenic,Aristotelianism,-0.3,0.5,0.3,-330,Natural teleology.
+Existentialism,philosophy,Modern,Existentialism,-0.5,0.8,0.2,1850,Radical freedom; immanent meaning.
+Nietzsche (Eternal Recurrence),philosophy,Modern,Nietzschean,0.6,0.9,0.2,1885,Affirm recurrence; creative will.
+Marxist Materialism,modern,Modern,Marxist Materialism,-0.6,-0.2,0.6,1848,Deterministic structures; immanent.
+Secular Humanism,modern,Modern,Secular Humanism,-0.6,0.7,0.7,1850,Progress; agency; immanent ethics.
+Enlightenment Rationalism,modern,Modern,Enlightenment Rationalism,-0.7,0.6,0.5,1700,Reason/rights; empirical order.
+Gaiaism / Deep Ecology,modern,Modern,Deep Ecology,0.6,0.5,0.95,1970,Planetary cycles; reciprocity.
+Transhumanism,modern,Modern,Transhumanism,-0.5,0.9,0.1,1990,Technological will to transcend limits.
+Scientology,modern,New Religious Movements,Scientology,-0.4,0.7,-0.2,1953,Auditing; thetan/body dualism.
+New Age / Pantheism,modern,New Religious Movements,New Age/Pantheism,0.5,0.5,0.9,1970,Holistic cycles; participatory agency.
+Bahá’í Faith,religion,Bahá’í,Main,-0.7,0.6,-0.5,1863,Progressive revelation; unity.
+Process Theology,theology,Modern,Process,-0.4,0.7,0.5,1920,God as evolving process.
+Atheist Physicalism,modern,Modern,Physicalism,-0.7,-0.3,0.6,1770,Deterministic naturalism; immanent cosmos.
+Absurdism,philosophy,Modern,Absurdism,-0.6,0.6,0.1,1942,Meaning through revolt.
+Postmodern Relativism,modern,Modern,Postmodern Relativism,0.0,0.2,0.4,1970,Deconstruction of metanarratives.
+Ancient Egyptian,religion,Egyptian,State Religion,0.7,0.4,0.8,-2500,Maʿat/cosmic order; Nile cycles; participatory rites; immanent sacred within state theology.
+Mesopotamian (Sumerian/Akkadian),religion,Mesopotamian,State Religion,0.6,0.2,0.6,-2200,Seasonal/astral cycles with fate (šīmtu); temple economy; immanent-yet-ordained cosmos.
+Canaanite/Phoenician,religion,Canaanite,Polytheism,0.7,0.5,0.7,-1200,Storm/sea and fertility cults (Baʿal/Asherah); ritual renewal; kinship with land/sea.
+Hittite/Anatolian,religion,Anatolian,Polytheism,0.6,0.3,0.6,-1500,Storm-god pantheon; treaty oaths; agrarian cycles; ritual maintenance of order.
+Hellenic Polytheism (Classical),religion,Hellenic,Polytheism (Classical),0.5,0.4,0.6,-700,Civic cults; oracles & Moira; immanent gods entwined with polis.
+Orphism (Greek),mysticism,Hellenic,Orphism,0.3,0.4,0.7,-500,Soul purification & rebirth; initiatory myth; cyclical cosmos.
+Eleusinian Mysteries,mysticism,Hellenic,Eleusinian,0.4,0.5,0.8,-600,Demeter–Persephone cycle; initiatory renewal; experiential immanence.
+Roman State Religion,religion,Roman,State Religion,0.5,0.5,0.6,-200,Pax deorum via rites/auspices; civic reciprocity with gods; pragmatic immanence.
+Roman Mithraism,mysticism,Roman,Mithraism,0.4,0.6,0.6,150,Solar/astral grades; initiatory agency; moral discipline within cosmic cycle.
+Early Vedic (Ṛgvedic),religion,Hinduism,Early Vedic,0.6,0.5,0.7,-1200,Ṛta (order) via sacrifice; cyclical fire/sky cult; immanence trending to later Vedānta.
+Celtic (Druidic),religion,Celtic,Druidic,0.7,0.6,0.9,-300,Animist groves; seasonal feasts; land-relation and participation.
+Norse/Germanic,religion,Norse/Germanic,Polytheism,0.3,0.6,0.7,900,Cycles toward Ragnarök; warrior agency; immanent pantheon/land-wights.
+Thracian/Daсian (Zalmoxian),religion,Thracian/Dacian,Zalmoxian,0.5,0.5,0.7,-400,Immortality cult; communal rites; immanent underworld/sky links.
+Etruscan,religion,Etruscan,State Religion,0.5,0.4,0.6,-600,Divination (haruspicy); civic-portent logic; immanent omen-bound order.
+Minoan (Aegean),religion,Minoan,Aegean,0.7,0.5,0.8,-1700,Peak sanctuaries; fertility & maritime cycles; goddess-centric immanence.
+Scythian/Sarmatian (Steppe),religion,Steppe,Scythian/Sarmatian,0.5,0.6,0.7,-500,Shamanic-royal cults; sky/horse symbolism; mobile cyclical rites.

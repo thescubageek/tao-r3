@@ -127,6 +127,83 @@
     content: "—"; 
     color: var(--muted); 
   }
+  
+  /* Dual Range Slider */
+  .dual-range-container {
+    position: relative;
+    height: 20px;
+    background: #ddd;
+    border-radius: 10px;
+  }
+  
+  .dual-range-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border-radius: 10px;
+    outline: none;
+    pointer-events: none; /* Disable track clicks */
+  }
+  
+  .dual-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: grab;
+    pointer-events: auto; /* Enable thumb interaction */
+  }
+  
+  .dual-range-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+  }
+  
+  .dual-range-slider::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: grab;
+    pointer-events: auto;
+    border: none; /* Remove default border for Firefox */
+  }
+  
+  .dual-range-slider::-moz-range-thumb:active {
+    cursor: grabbing;
+  }
+  
+  /* Remove Firefox track styling */
+  .dual-range-slider::-moz-range-track {
+    background: transparent;
+    border: none;
+  }
+  
+  #yearRangeMin {
+    z-index: 1;
+  }
+  
+  #yearRangeMax {
+    z-index: 2;
+  }
+  
+  /* Visual range indicator */
+  .range-fill {
+    position: absolute;
+    height: 20px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 0;
+  }
 </style>
 <script type="importmap">
 {
@@ -164,14 +241,10 @@
     </label>
 
     <span class="muted" style="margin-left:12px;">Year Range:</span>
-    <div style="margin-left:12px; margin-top:8px; position:relative; width:220px;">
-      <input id="yearRangeMin" type="range" min="-3000" max="2025" value="-3000" step="10" 
-             style="position:absolute; width:220px; height:20px; background:transparent; pointer-events:none;">
-      <input id="yearRangeMax" type="range" min="-3000" max="2025" value="2025" step="10" 
-             style="position:absolute; width:220px; height:20px; background:transparent;">
-      <div style="position:relative; height:20px; background:#ddd; border-radius:10px;">
-        <div id="yearRangeTrack" style="position:absolute; height:20px; background:linear-gradient(90deg, #6cc6ff, #6ee7a2); border-radius:10px; top:0;"></div>
-      </div>
+    <div class="dual-range-container" style="margin-left:12px; margin-top:8px; position:relative; width:220px;">
+      <div id="rangeFill" class="range-fill"></div>
+      <input id="yearRangeMin" type="range" min="-3000" max="2025" value="-3000" step="10" class="dual-range-slider">
+      <input id="yearRangeMax" type="range" min="-3000" max="2025" value="2025" step="10" class="dual-range-slider">
     </div>
     <div style="margin-left:12px; margin-top:4px;">
       <span id="yearLabel" class="muted" style="font-size:11px;"></span>
@@ -1142,8 +1215,9 @@ function onClickCanvas(ev){
       );
     } else {
       // Standard formatting for reference points
+      const yearInfo = hit.year ? ` (${formatYear(hit.year)})` : '';
       showTooltip(ev.clientX, ev.clientY,
-        `${hit.name}<br/>T=${(+hit.T).toFixed(2)} · A=${(+hit.A).toFixed(2)} · O=${(+hit.O).toFixed(2)}<br/>` +
+        `${hit.name}${yearInfo}<br/>T=${(+hit.T).toFixed(2)} · A=${(+hit.A).toFixed(2)} · O=${(+hit.O).toFixed(2)}<br/>` +
         `<span style="opacity:.8">${hit.category}</span><br/><span style="opacity:.7">${hit.notes||''}</span>`,
         dotColor,
         hitMesh
@@ -1492,27 +1566,18 @@ function wireGradientUI(){
   const yearRangeMin  = document.getElementById('yearRangeMin');
   const yearRangeMax  = document.getElementById('yearRangeMax');
   const yearLabel     = document.getElementById('yearLabel');
-  const yearRangeTrack = document.getElementById('yearRangeTrack');
 
   const formatYear = (year) => {
     return year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
   };
 
   const updateYearDisplay = () => {
-    if (yearRangeMin && yearRangeMax && yearLabel && yearRangeTrack) {
+    if (yearRangeMin && yearRangeMax && yearLabel) {
       const minVal = parseInt(yearRangeMin.value);
       const maxVal = parseInt(yearRangeMax.value);
       
       // Update label
       yearLabel.textContent = `${formatYear(minVal)} to ${formatYear(maxVal)}`;
-      
-      // Update visual track
-      const totalRange = 2025 - (-3000); // 5025 total range
-      const leftPercent = ((minVal - (-3000)) / totalRange) * 100;
-      const rightPercent = ((maxVal - (-3000)) / totalRange) * 100;
-      
-      yearRangeTrack.style.left = leftPercent + '%';
-      yearRangeTrack.style.width = (rightPercent - leftPercent) + '%';
     }
   };
 
@@ -1541,23 +1606,71 @@ function wireGradientUI(){
       applyColors();
     });
   }
+  const updateRangeFill = () => {
+    const rangeFill = document.getElementById('rangeFill');
+    if (yearRangeMin && yearRangeMax && rangeFill) {
+      const minVal = parseInt(yearRangeMin.value);
+      const maxVal = parseInt(yearRangeMax.value);
+      const totalRange = 2025 - (-3000);
+      
+      const minPercent = ((minVal - (-3000)) / totalRange) * 100;
+      const maxPercent = ((maxVal - (-3000)) / totalRange) * 100;
+      
+      // Update the visual range fill
+      rangeFill.style.left = `${minPercent}%`;
+      rangeFill.style.width = `${maxPercent - minPercent}%`;
+    }
+  };
+
+  const setToggleAccessible = () => {
+    if (yearRangeMin && yearRangeMax) {
+      const minVal = parseInt(yearRangeMin.value);
+      const maxVal = parseInt(yearRangeMax.value);
+      
+      // When sliders are close together, ensure the max slider is on top
+      if (Math.abs(maxVal - minVal) < 100) {
+        yearRangeMax.style.zIndex = '3';
+        yearRangeMin.style.zIndex = '2';
+      } else {
+        yearRangeMax.style.zIndex = '2';
+        yearRangeMin.style.zIndex = '1';
+      }
+    }
+  };
+
   if (yearRangeMin){
-    // Enable pointer events when dragging
-    yearRangeMin.addEventListener('mousedown', () => {
-      yearRangeMin.style.pointerEvents = 'auto';
-      yearRangeMax.style.pointerEvents = 'none';
+    yearRangeMin.addEventListener('input', () => {
+      const minVal = parseInt(yearRangeMin.value);
+      const maxVal = parseInt(yearRangeMax.value);
+      
+      if (minVal > maxVal) {
+        yearRangeMin.value = maxVal;
+      }
+      
+      updateRangeFill();
+      setToggleAccessible();
+      handleRangeChange();
     });
-    yearRangeMin.addEventListener('input', handleRangeChange);
-  }
-  if (yearRangeMax){
-    yearRangeMax.addEventListener('input', handleRangeChange);
   }
   
-  // Re-enable both sliders when mouse is released
-  document.addEventListener('mouseup', () => {
-    if (yearRangeMin) yearRangeMin.style.pointerEvents = 'none';
-    if (yearRangeMax) yearRangeMax.style.pointerEvents = 'auto';
-  });
+  if (yearRangeMax){
+    yearRangeMax.addEventListener('input', () => {
+      const minVal = parseInt(yearRangeMin.value);
+      const maxVal = parseInt(yearRangeMax.value);
+      
+      if (maxVal < minVal) {
+        yearRangeMax.value = minVal;
+      }
+      
+      updateRangeFill();
+      setToggleAccessible();
+      handleRangeChange();
+    });
+  }
+  
+  // Initialize
+  updateRangeFill();
+  setToggleAccessible();
   
   updateYearDisplay();
 }

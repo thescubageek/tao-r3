@@ -163,9 +163,19 @@
       </select>
     </label>
 
-    <span class="muted" style="margin-left:12px;">Year:</span>
-    <input id="yearRange" type="range" min="-3000" max="2025" value="2025" step="10" style="width:220px; vertical-align:middle;">
-    <span id="yearLabel" class="muted" style="min-width:62px; display:inline-block;">≤ 2025</span>
+    <span class="muted" style="margin-left:12px;">Year Range:</span>
+    <div style="margin-left:12px; margin-top:8px; position:relative; width:220px;">
+      <input id="yearRangeMin" type="range" min="-3000" max="2025" value="-3000" step="10" 
+             style="position:absolute; width:220px; height:20px; background:transparent; pointer-events:none;">
+      <input id="yearRangeMax" type="range" min="-3000" max="2025" value="2025" step="10" 
+             style="position:absolute; width:220px; height:20px; background:transparent;">
+      <div style="position:relative; height:20px; background:#ddd; border-radius:10px;">
+        <div id="yearRangeTrack" style="position:absolute; height:20px; background:linear-gradient(90deg, #6cc6ff, #6ee7a2); border-radius:10px; top:0;"></div>
+      </div>
+    </div>
+    <div style="margin-left:12px; margin-top:4px;">
+      <span id="yearLabel" class="muted" style="font-size:11px;"></span>
+    </div>
     <br>
     <label class="muted" style="margin-left:12px;">
       Trend ribbons
@@ -832,15 +842,15 @@ function init3D(){
   }
   
   // Add labels at both ends of each axis
-  // T axis (Transcendence): Linear vs Cyclical
-  const tPosLabel = createAxisLabel('Linear', new THREE.Vector3(1.15, 0, 0), cT);
-  const tNegLabel = createAxisLabel('Cyclical', new THREE.Vector3(-1.15, 0, 0), cT);
+  // T axis: −1 Linear ↔ +1 Cyclical
+  const tPosLabel = createAxisLabel('Cyclical', new THREE.Vector3(1.15, 0, 0), cT);
+  const tNegLabel = createAxisLabel('Linear', new THREE.Vector3(-1.15, 0, 0), cT);
   
-  // A axis (Agency): Volitional vs Deterministic  
+  // A axis: −1 Deterministic ↔ +1 Volitional/Participatory
   const aPosLabel = createAxisLabel('Volitional', new THREE.Vector3(0, 1.15, 0), cA);
   const aNegLabel = createAxisLabel('Deterministic', new THREE.Vector3(0, -1.15, 0), cA);
   
-  // O axis (Order): Immanent vs Transcendent
+  // O axis: −1 Transcendent/Dualistic ↔ +1 Immanent/Relational
   const oPosLabel = createAxisLabel('Immanent', new THREE.Vector3(0, 0, 1.15), cO);
   const oNegLabel = createAxisLabel('Transcendent', new THREE.Vector3(0, 0, -1.15), cO);
   
@@ -1251,13 +1261,14 @@ function gatherAllRows(){
 
 function applyColors(){
   const mode = document.getElementById('colorMode')?.value || 'category';
-  const yrCut = parseInt(document.getElementById('yearRange')?.value||yearMax,10);
+  const yrMin = parseInt(document.getElementById('yearRangeMin')?.value || yearMin, 10);
+  const yrMax = parseInt(document.getElementById('yearRangeMax')?.value || yearMax, 10);
 
   const recolorGroup = (group, groupType) => {
     if (!group) return;
     group.children.forEach(m => {
       const r = m.userData;
-      const alive = Number.isNaN(r.year) || r.year <= yrCut;
+      const alive = Number.isNaN(r.year) || (r.year >= yrMin && r.year <= yrMax);
 
       // Data source filter
       let passesDataSource = true;
@@ -1476,26 +1487,79 @@ function populateSubtypeSelect(trad){
 }
 
 function wireGradientUI(){
-  const colorMode   = document.getElementById('colorMode');
-  const dataSource  = document.getElementById('dataSource');
-  const yearRange   = document.getElementById('yearRange');
-  const yearLabel   = document.getElementById('yearLabel');
+  const colorMode     = document.getElementById('colorMode');
+  const dataSource    = document.getElementById('dataSource');
+  const yearRangeMin  = document.getElementById('yearRangeMin');
+  const yearRangeMax  = document.getElementById('yearRangeMax');
+  const yearLabel     = document.getElementById('yearLabel');
+  const yearRangeTrack = document.getElementById('yearRangeTrack');
 
-  const updateYearLabel = () => { yearLabel.textContent = `≤ ${yearRange.value}`; };
+  const formatYear = (year) => {
+    return year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
+  };
+
+  const updateYearDisplay = () => {
+    if (yearRangeMin && yearRangeMax && yearLabel && yearRangeTrack) {
+      const minVal = parseInt(yearRangeMin.value);
+      const maxVal = parseInt(yearRangeMax.value);
+      
+      // Update label
+      yearLabel.textContent = `${formatYear(minVal)} to ${formatYear(maxVal)}`;
+      
+      // Update visual track
+      const totalRange = 2025 - (-3000); // 5025 total range
+      const leftPercent = ((minVal - (-3000)) / totalRange) * 100;
+      const rightPercent = ((maxVal - (-3000)) / totalRange) * 100;
+      
+      yearRangeTrack.style.left = leftPercent + '%';
+      yearRangeTrack.style.width = (rightPercent - leftPercent) + '%';
+    }
+  };
+
+  const ensureValidRange = () => {
+    if (yearRangeMin && yearRangeMax) {
+      const minVal = parseInt(yearRangeMin.value);
+      const maxVal = parseInt(yearRangeMax.value);
+      if (minVal > maxVal) {
+        yearRangeMax.value = minVal;
+      }
+    }
+  };
+
+  const handleRangeChange = () => {
+    ensureValidRange();
+    updateYearDisplay();
+    applyColors();
+  };
 
   if (colorMode){
     colorMode.addEventListener('change', applyColors);
   }
   if (dataSource){
-    dataSource.addEventListener('change', () => {
+    dataSource.addEventListener('change', ()=>{
       currentDataSource = dataSource.value;
       applyColors();
     });
   }
-  if (yearRange){
-    yearRange.addEventListener('input', ()=>{ updateYearLabel(); applyColors(); });
-    updateYearLabel();
+  if (yearRangeMin){
+    // Enable pointer events when dragging
+    yearRangeMin.addEventListener('mousedown', () => {
+      yearRangeMin.style.pointerEvents = 'auto';
+      yearRangeMax.style.pointerEvents = 'none';
+    });
+    yearRangeMin.addEventListener('input', handleRangeChange);
   }
+  if (yearRangeMax){
+    yearRangeMax.addEventListener('input', handleRangeChange);
+  }
+  
+  // Re-enable both sliders when mouse is released
+  document.addEventListener('mouseup', () => {
+    if (yearRangeMin) yearRangeMin.style.pointerEvents = 'none';
+    if (yearRangeMax) yearRangeMax.style.pointerEvents = 'auto';
+  });
+  
+  updateYearDisplay();
 }
 
 function wireTrendUI(){

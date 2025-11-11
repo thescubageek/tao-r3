@@ -262,6 +262,7 @@
         <option value="A">A</option>
         <option value="O">O</option>
         <option value="All">All</option>
+        <option value="Time">Time</option>
       </select>
     </label>
 
@@ -1411,7 +1412,29 @@ function buildBinMedians(markers, axisKey='O', bins=8, minPerBin=3){
   if (!markers.length) return [];
   // choose param axis
   const getAxisVal = (m, key) => (key==='T'?m.userData.T:(key==='A'?m.userData.A:m.userData.O));
-  const minV=-1, maxV=1, step=(maxV-minV)/bins;
+  
+  // For highly clustered data, use adaptive range instead of full [-1, 1]
+  const axisValues = markers.map(m => getAxisVal(m, axisKey)).filter(Number.isFinite);
+  if (!axisValues.length) return [];
+  
+  const actualMin = Math.min(...axisValues);
+  const actualMax = Math.max(...axisValues);
+  const range = actualMax - actualMin;
+  
+  // If the data is very clustered (range < 0.4), use adaptive binning
+  let minV, maxV;
+  if (range < 0.4 && markers.length < 50) {
+    // Use actual data range with small padding
+    const padding = Math.max(0.1, range * 0.2);
+    minV = Math.max(-1, actualMin - padding);
+    maxV = Math.min(1, actualMax + padding);
+  } else {
+    // Use full range
+    minV = -1;
+    maxV = 1;
+  }
+  
+  const step = (maxV - minV) / bins;
   const binsArr = Array.from({length: bins}, () => []);
 
   markers.forEach(m => {
@@ -1422,10 +1445,32 @@ function buildBinMedians(markers, axisKey='O', bins=8, minPerBin=3){
     binsArr[idx].push(m);
   });
 
+  // Adjust requirements based on axis characteristics
+  let effectiveMinPerBin, minCenters;
+  
+  if (axisKey === 'A') {
+    // A axis: clustering in middle ranges (0.3-0.8)
+    effectiveMinPerBin = Math.max(1, Math.min(minPerBin, 2));
+    minCenters = 5; // Was 3, now ~1.7x for double bins
+  } else if (axisKey === 'T') {
+    // T axis: good spread but some clustering around -0.8 to -0.5 (linear traditions)
+    // For filtered datasets (like single traditions), be more lenient
+    effectiveMinPerBin = Math.max(1, Math.min(minPerBin, 2));
+    minCenters = 3; // Was 2, now ~1.5x for double bins
+  } else if (axisKey === 'O') {
+    // O axis: excellent spread across full range, keep strict requirements
+    effectiveMinPerBin = minPerBin;
+    minCenters = 7; // Was 4, now ~1.75x for double bins
+  } else {
+    // Default for any other axis
+    effectiveMinPerBin = minPerBin;
+    minCenters = 7; // Was 4, now ~1.75x for double bins
+  }
+
   // For each bin: median of the *other two* axes + bin-center on axisKey
   const centers = [];
   binsArr.forEach((bucket, i) => {
-    if (bucket.length < minPerBin) return;
+    if (bucket.length < effectiveMinPerBin) return;
     const valsT = bucket.map(m => m.userData.T);
     const valsA = bucket.map(m => m.userData.A);
     const valsO = bucket.map(m => m.userData.O);
@@ -1443,8 +1488,70 @@ function buildBinMedians(markers, axisKey='O', bins=8, minPerBin=3){
     }
   });
 
-  // Need at least 4 points for a nice curve
-  return centers.length >= 4 ? centers : [];
+  // Debug logging for all axes
+  if (axisKey === 'A' || axisKey === 'T' || axisKey === 'O') {
+    console.log(`${axisKey}-axis trend: ${markers.length} markers, ${centers.length} centers (need ${minCenters})`);
+    console.log(`${axisKey} range: [${minV.toFixed(2)}, ${maxV.toFixed(2)}] (data: ${actualMin.toFixed(2)} to ${actualMax.toFixed(2)})`);
+    console.log(`${axisKey} bin distribution:`, binsArr.map((bin, i) => `${i}: ${bin.length}`).join(', '));
+  }
+
+  // Need at least minCenters points for a nice curve
+  return centers.length >= minCenters ? centers : [];
+}
+
+function buildTimeBasedTrend(markers, timeBins=50, minPerBin=1){
+  if (!markers.length) return [];
+  
+  // Filter out markers without valid years
+  const validMarkers = markers.filter(m => Number.isFinite(m.userData.year));
+  if (validMarkers.length < 3) return [];
+  
+  // Find year range
+  const years = validMarkers.map(m => m.userData.year);
+  const minYear = Math.min(...years);
+  const maxYear = Math.max(...years);
+  const yearRange = maxYear - minYear;
+  
+  if (yearRange === 0) return [];
+  
+  // Create time bins - each bin represents a time period
+  const step = yearRange / timeBins;
+  const binsArr = Array.from({length: timeBins}, () => []);
+  
+  validMarkers.forEach(m => {
+    const year = m.userData.year;
+    let idx = Math.floor((year - minYear) / step);
+    if (idx >= timeBins) idx = timeBins - 1;
+    binsArr[idx].push(m);
+  });
+  
+  // Calculate median T, A, O for each time bin
+  const centers = [];
+  const timeInfo = [];
+  binsArr.forEach((bucket, i) => {
+    if (bucket.length < minPerBin) return;
+    
+    const valsT = bucket.map(m => m.userData.T);
+    const valsA = bucket.map(m => m.userData.A);
+    const valsO = bucket.map(m => m.userData.O);
+    
+    const Tm = median(valsT);
+    const Am = median(valsA);
+    const Om = median(valsO);
+    
+    if ([Tm, Am, Om].every(Number.isFinite)) {
+      centers.push(new THREE.Vector3(Tm, Am, Om));
+      const binStart = Math.round(minYear + i * step);
+      const binEnd = Math.round(minYear + (i + 1) * step);
+      timeInfo.push(`${binStart}-${binEnd} (${bucket.length})`);
+    }
+  });
+  
+  console.log(`Time-based trend: ${validMarkers.length} markers with years, ${centers.length} time centers`);
+  console.log(`Year range: ${minYear} to ${maxYear} (${Math.round(step)} years per bin)`);
+  console.log('Active time periods:', timeInfo.join(', '));
+  
+  return centers.length >= 3 ? centers : [];
 }
 
 function curveToTube(curvePoints, colorStart=0x4ea7ff, colorEnd=0xffb86b){
@@ -1500,15 +1607,49 @@ function updateTrends(){
   if (currentDataSource==='both' || currentDataSource==='traditions') sets.push({group: refGroupTraditions, color1:0x6cc6ff, color2:0x6ee7a2});
   if (currentDataSource==='both' || currentDataSource==='figures')    sets.push({group: refGroupFigures,    color1:0xc792ea, color2:0xffb86b});
 
-  sets.forEach(s => {
-    const vis = visibleMarkersFrom(s.group);
-    const centers = buildBinMedians(vis, axis, /*bins*/ 10, /*minPerBin*/ 3);
-    if (centers.length >= 4){
-      const mesh = curveToTube(centers, s.color1, s.color2);
-      trendGroup.add(mesh);
-    }
-    // If we didn't get enough centers, we intentionally draw nothing.
-  });
+  if (axis === 'Time') {
+    // Show time-based evolution trends
+    sets.forEach(s => {
+      const vis = visibleMarkersFrom(s.group);
+      const centers = buildTimeBasedTrend(vis, /*timeBins*/ 50, /*minPerBin*/ 1);
+      if (centers.length >= 3){
+        // Use a temporal gradient: ancient (purple) to modern (gold)
+        const mesh = curveToTube(centers, 0x9d7ce8, 0xf2cc60);
+        trendGroup.add(mesh);
+      }
+    });
+  } else if (axis === 'All') {
+    // Show trend lines for all three axes
+    const axes = ['T', 'A', 'O'];
+    const axisColors = {
+      'T': {color1: 0x6cc6ff, color2: 0x4ea7ff}, // Blue gradient for T axis
+      'A': {color1: 0x6ee7a2, color2: 0x4ed68a}, // Green gradient for A axis  
+      'O': {color1: 0xffb86b, color2: 0xff9f43}  // Orange gradient for O axis
+    };
+    
+    sets.forEach(s => {
+      const vis = visibleMarkersFrom(s.group);
+      axes.forEach(axisKey => {
+        const centers = buildBinMedians(vis, axisKey, /*bins*/ 20, /*minPerBin*/ 3);
+        if (centers.length >= 4){
+          const colors = axisColors[axisKey];
+          const mesh = curveToTube(centers, colors.color1, colors.color2);
+          trendGroup.add(mesh);
+        }
+      });
+    });
+  } else {
+    // Show trend line for single axis
+    sets.forEach(s => {
+      const vis = visibleMarkersFrom(s.group);
+      const centers = buildBinMedians(vis, axis, /*bins*/ 20, /*minPerBin*/ 3);
+      if (centers.length >= 4){
+        const mesh = curveToTube(centers, s.color1, s.color2);
+        trendGroup.add(mesh);
+      }
+      // If we didn't get enough centers, we intentionally draw nothing.
+    });
+  }
 }
 
 function populateTraditionSelect(){

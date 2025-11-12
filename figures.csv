@@ -2,245 +2,244 @@ name,category,tradition,subtype,T,A,O,year,notes
 Ptahhotep,philosophy,Egyptian,State Religion,0.7,0.3,0.7,-2350,Egyptian vizier; Maʿat ethics; cyclical order through right speech and hierarchy.
 Imhotep,science,Egyptian,State Religion,0.6,0.4,0.7,-2650,Architect-healer; pragmatic wisdom; divine immanence through craft.
 Hammurabi,politics,Mesopotamian,State Religion,-0.7,0.5,-0.7,-1750,Lawgiver; linear justice under transcendent code.
-Zoroaster (Zarathustra),religion,Zoroastrianism,Classical,-0.8,0.5,-0.6,-1000,Prophet of dualism; moral choice within linear cosmic battle.
-Laozi,philosophy,Daoism,Classical,0.7,0.6,0.9,-400,Wu-wei; immanent Dao.
-Zhuangzi,philosophy,Daoism,Classical,0.7,0.7,0.9,-350,Relativism of perspectives; spontaneous harmony with Dao.
-Confucius,philosophy,Confucianism,Classical,0.5,0.6,0.3,-500,Ritual virtue; relational order; immanent ethics.
-Mozi,philosophy,Confucianism,Classical,0.5,0.6,0.2,-450,Utilitarian impartial love; social engineering; pragmatic immanence.
-Mencius,philosophy,Confucianism,Classical,0.5,0.6,0.3,-350,Innate goodness; moral cultivation; immanent virtue.
+Zoroaster (Zarathustra),religion,Zoroastrianism,Classical,0.8,0.5,-0.6,-1000,Prophet of dualism; moral choice within linear cosmic battle.
+Laozi,philosophy,Daoism,Classical,-0.7,0.6,0.9,-400,Wu-wei; immanent Dao.
+Zhuangzi,philosophy,Daoism,Classical,-0.7,0.7,0.9,-350,Relativism of perspectives; spontaneous harmony with Dao.
+Confucius,philosophy,Confucianism,Classical,-0.3,0.6,0.3,-500,Ritual virtue; relational order; immanent ethics.
+Mozi,philosophy,Confucianism,Classical,-0.3,0.6,0.2,-450,Utilitarian impartial love; social engineering; pragmatic immanence.
+Mencius,philosophy,Confucianism,Classical,-0.3,0.6,0.3,-350,Innate goodness; moral cultivation; immanent virtue.
 Han Feizi,politics,Legalist,,0.5,0.5,0.0,-240,Legalist determinism; state order via law; minimal transcendence.
-Buddha (Gautama Śākyamuni),religion,Buddhism,Theravada,0.6,0.1,0.9,-500,Middle Way; liberation through insight; causal immanence.
-Mahāvīra,religion,Jainism,Main,0.8,-0.4,0.7,-500,Karmic determinism; ascetic liberation.
-Pythagoras,philosophy,Hellenic,,-0.4,0.5,-0.5,-520,Mathematical harmony; soul transmigration; mixed transcendence.
-Heraclitus,philosophy,Hellenic,,0.3,0.6,0.4,-500,Flux and logos; cyclic unity of opposites; immanent process.
-Parmenides,philosophy,Hellenic,,-0.5,0.3,-0.7,-480,Being as unchanging; transcendence of appearance.
-Empedocles,philosophy,Hellenic,,0.2,0.5,0.5,-460,Four roots and Love/Strife cycles; semi-immanent cosmology.
-Anaxagoras,philosophy,Hellenic,,-0.3,0.5,-0.4,-450,Nous ordering matter; dualist teleology.
-Socrates,philosophy,Hellenic,,-0.4,0.6,-0.4,-400,Moral inquiry; daimonion; rational agency.
-Plato,philosophy,Hellenic,,-0.4,0.4,-0.7,-380,World of Forms; ascent to the Good.
-Aristotle,philosophy,Hellenic,,-0.3,0.5,0.3,-340,Immanent forms; teleology.
-Diogenes of Sinope,philosophy,Hellenic,,0.2,0.8,0.4,-350,Cynic naturalism; individual freedom; immanent simplicity.
-Epicurus,philosophy,Hellenic,,-0.3,0.7,0.5,-300,Atomism; pleasure as tranquility; immanent materialism.
+Buddha (Gautama Śākyamuni),religion,Buddhism,Theravada,-0.6,0.1,0.9,-500,Middle Way; liberation through insight; causal immanence.
+Mahāvīra,religion,Jainism,Main,-0.8,-0.4,0.7,-500,Karmic determinism; ascetic liberation.
+Pythagoras,philosophy,Hellenic,,-0.2,0.5,-0.5,-520,Mathematical harmony; soul transmigration; mixed transcendence.
+Heraclitus,philosophy,Hellenic,,-0.15,0.6,0.4,-500,Flux and logos; cyclic unity of opposites; immanent process.
+Parmenides,philosophy,Hellenic,,-0.25,0.3,-0.7,-480,Being as unchanging; transcendence of appearance.
+Empedocles,philosophy,Hellenic,,-0.1,0.5,0.5,-460,Four roots and Love/Strife cycles; semi-immanent cosmology.
+Anaxagoras,philosophy,Hellenic,,-0.15,0.5,-0.4,-450,Nous ordering matter; dualist teleology.
+Socrates,philosophy,Hellenic,,-0.2,0.6,-0.4,-400,Moral inquiry; daimonion; rational agency.
+Plato,philosophy,Hellenic,,-0.2,0.4,-0.7,-380,World of Forms; ascent to the Good.
+Aristotle,philosophy,Hellenic,,-0.15,0.5,0.3,-340,Immanent forms; teleology.
+Diogenes of Sinope,philosophy,Hellenic,,-0.1,0.8,0.4,-350,Cynic naturalism; individual freedom; immanent simplicity.
+Epicurus,philosophy,Hellenic,,-0.15,0.7,0.5,-300,Atomism; pleasure as tranquility; immanent materialism.
 Zeno of Citium (early Stoic),philosophy,Hellenic,,-0.2,0.6,0.4,-300,Fated logos; virtue through reason.
-Pyrrho,philosophy,Hellenic,,-0.1,0.4,0.5,-300,Skepticism; ataraxia; neutral immanence.
-Ashoka,politics,Buddhism,Mahayana,0.5,0.4,0.7,-250,Buddhist emperor; dharma governance; moral immanence.
-Xunzi,philosophy,Confucianism,Classical,0.5,0.5,0.2,-240,Human nature as selfish; ritual discipline; structural order.
-Archimedes,science,Hellenic,,-0.4,0.7,0.3,-250,Mathematics and mechanics; immanent laws of nature.
+Pyrrho,philosophy,Hellenic,,-0.03,0.4,0.5,-300,Skepticism; ataraxia; neutral immanence.
+Ashoka,politics,Buddhism,Mahayana,-0.5,0.4,0.7,-250,Buddhist emperor; dharma governance; moral immanence.
+Xunzi,philosophy,Confucianism,Classical,-0.3,0.5,0.2,-240,Human nature as selfish; ritual discipline; structural order.
+Archimedes,science,Hellenic,,-0.2,0.7,0.3,-250,Mathematics and mechanics; immanent laws of nature.
 Cicero,politics,Roman,,-0.5,0.6,0.3,-50,Stoic republicanism; reason and law.
-Philo of Alexandria,religion,Judaism,Rabbinic,-0.6,0.5,-0.5,20,Hellenistic Judaism; Logos as mediator; transcendence.
-Jesus of Nazareth,religion,Christianity,Catholic,-0.8,0.7,-0.7,30,Kingdom of God; inner agency; transcendent love.
-Paul the Apostle,religion,Christianity,Catholic,-0.8,0.7,-0.7,55,Universal salvation history; will under grace.
-Nāgārjuna,philosophy,Buddhism,Mahayana,0.4,0.1,0.95,200,Emptiness; two truths; non-duality.
-Plotinus (Neoplatonism),philosophy,Hellenic,,-0.2,0.4,-0.7,250,Emanation; mystical ascent.
-Origen,religion,Christianity,Orthodox,-0.7,0.5,-0.6,250,Christian Platonism; rational soul ascent.
-Mani,religion,Manichaeism,Classical,-0.7,0.4,-0.8,250,Manichaeism; cosmic dualism of light/dark.
-Augustine of Hippo,religion,Christianity,Catholic,-0.8,0.5,-0.7,400,Grace; linear salvation.
-Boethius,philosophy,Christianity,Catholic,-0.6,0.4,-0.5,520,*Consolation of Philosophy*; Providence vs free will.
-Gregory of Nyssa,religion,Christianity,Orthodox,-0.7,0.5,-0.5,380,Apophatic mysticism; spiritual ascent.
-Dionysius the Areopagite,religion,Christianity,Orthodox,-0.7,0.4,-0.6,500,Negative theology; hierarchies of being.
-Bede the Venerable,science,Christianity,Catholic,-0.6,0.5,-0.3,730,Computus of Easter; sacred chronology.
+Philo of Alexandria,religion,Judaism,Rabbinic,0.6,0.5,-0.5,20,Hellenistic Judaism; Logos as mediator; transcendence.
+Jesus of Nazareth,religion,Christianity,Catholic,0.8,0.7,-0.7,30,Kingdom of God; inner agency; transcendent love.
+Paul the Apostle,religion,Christianity,Catholic,0.8,0.7,-0.7,55,Universal salvation history; will under grace.
+Nāgārjuna,philosophy,Buddhism,Mahayana,-0.4,0.1,0.95,200,Emptiness; two truths; non-duality.
+Plotinus (Neoplatonism),philosophy,Hellenic,,-0.1,0.4,-0.7,250,Emanation; mystical ascent.
+Origen,religion,Christianity,Orthodox,0.7,0.5,-0.6,250,Christian Platonism; rational soul ascent.
+Mani,religion,Manichaeism,Classical,0.7,0.4,-0.8,250,Manichaeism; cosmic dualism of light/dark.
+Augustine of Hippo,religion,Christianity,Catholic,0.8,0.5,-0.7,400,Grace; linear salvation.
+Boethius,philosophy,Christianity,Catholic,0.6,0.4,-0.5,520,*Consolation of Philosophy*; Providence vs free will.
+Gregory of Nyssa,religion,Christianity,Orthodox,0.7,0.5,-0.5,380,Apophatic mysticism; spiritual ascent.
+Dionysius the Areopagite,religion,Christianity,Orthodox,0.7,0.4,-0.6,500,Negative theology; hierarchies of being.
+Bede the Venerable,science,Christianity,Catholic,0.6,0.5,-0.3,730,Computus of Easter; sacred chronology.
 Shankara (Ādi Śaṅkara),philosophy,Hinduism,Advaita Vedanta,0.0,0.0,1.0,800,Advaita Vedānta; non-dual realization.
-Charlemagne,politics,Christianity,Catholic,-0.7,0.6,-0.5,800,Imperial Christendom; moral order by decree.
-Avicenna (Ibn Sīnā),philosophy,Islam,,-0.6,0.5,-0.5,1020,Islamic Peripatetic; necessary being; transcendence.
-Al-Farabi,philosophy,Islam,,-0.6,0.5,-0.4,950,Islamic Aristotelianism; rational cosmos.
-Al-Ghazālī,religion,Islam,Sufi,-0.7,0.5,-0.6,1100,Sufi theologian; occasionalism; transcendence through surrender.
-Anselm of Canterbury,religion,Christianity,Catholic,-0.7,0.5,-0.6,1080,Ontological proof; rational faith.
-Averroes (Ibn Rushd),philosophy,Islam,,-0.6,0.6,-0.4,1180,Commentator on Aristotle; unity of intellect.
-Maimonides,religion,Judaism,Rabbinic,-0.7,0.5,-0.6,1180,Jewish Aristotelianism; negative theology.
+Charlemagne,politics,Christianity,Catholic,0.7,0.6,-0.5,800,Imperial Christendom; moral order by decree.
+Avicenna (Ibn Sīnā),philosophy,Islam,,0.6,0.5,-0.5,1020,Islamic Peripatetic; necessary being; transcendence.
+Al-Farabi,philosophy,Islam,,0.6,0.5,-0.4,950,Islamic Aristotelianism; rational cosmos.
+Al-Ghazālī,religion,Islam,Sufi,0.7,0.5,-0.6,1100,Sufi theologian; occasionalism; transcendence through surrender.
+Anselm of Canterbury,religion,Christianity,Catholic,0.7,0.5,-0.6,1080,Ontological proof; rational faith.
+Averroes (Ibn Rushd),philosophy,Islam,,0.6,0.6,-0.4,1180,Commentator on Aristotle; unity of intellect.
+Maimonides,religion,Judaism,Rabbinic,0.7,0.5,-0.6,1180,Jewish Aristotelianism; negative theology.
 Ibn Arabi,mysticism,Islam,Sufi,0.1,0.3,0.9,1200,Unity of Being (*wahdat al-wujūd*); pure immanence.
-Aquinas,religion,Christianity,Catholic,-0.7,0.5,-0.6,1275,Scholastic synthesis; natural law.
-Longchenpa,philosophy,Buddhism,Vajrayana,0.4,0.3,0.9,1350,Dzogchen; spontaneous presence; immanence of mind.
-Luther,religion,Christianity,Reformed/Calvinist,-0.8,0.7,-0.7,1517,Justification by faith.
-Calvin,religion,Christianity,Reformed/Calvinist,-0.85,-0.3,-0.7,1550,Predestination; sovereignty.
-Francis Bacon,science,Modern,,-0.6,0.7,0.5,1620,Experimental method.
-Descartes,philosophy,Modern,,-0.6,0.7,-0.6,1640,Dualism; methodic doubt; will.
-Hobbes,philosophy,Modern,,-0.6,0.5,0.2,1651,Mechanism; contract; immanence.
+Aquinas,religion,Christianity,Catholic,0.7,0.5,-0.6,1275,Scholastic synthesis; natural law.
+Longchenpa,philosophy,Buddhism,Vajrayana,-0.4,0.3,0.9,1350,Dzogchen; spontaneous presence; immanence of mind.
+Luther,religion,Christianity,Reformed/Calvinist,0.8,0.7,-0.7,1517,Justification by faith.
+Calvin,religion,Christianity,Reformed/Calvinist,0.85,-0.3,-0.7,1550,Predestination; sovereignty.
+Francis Bacon,science,Modern,,0.6,0.7,0.5,1620,Experimental method.
+Descartes,philosophy,Modern,,0.6,0.7,-0.6,1640,Dualism; methodic doubt; will.
+Hobbes,philosophy,Modern,,0.6,0.5,0.2,1651,Mechanism; contract; immanence.
 Spinoza,philosophy,Modern,,0.0,0.6,0.8,1677,Substance monism; immanence.
-Newton,science,Modern,,-0.6,0.7,-0.3,1687,Mathematical order; deistic tint.
-Locke,philosophy,Modern,,-0.6,0.7,0.4,1690,Empiricism; rights.
-Hume,philosophy,Modern,,-0.5,0.5,0.4,1740,Skepticism; habit.
-Rousseau,philosophy,Modern,,-0.5,0.7,0.2,1762,Natural goodness; general will.
-Jefferson,politics,Modern,,-0.6,0.8,0.4,1776,Enlightenment republicanism.
-Washington,politics,Modern,,-0.6,0.7,0.3,1789,Republican virtue.
-Kant,philosophy,Modern,,-0.6,0.6,-0.3,1785,Transcendental idealism; duty.
-Hegel,philosophy,Modern,,-0.6,0.6,-0.4,1820,Dialectical history.
-Napoleon,politics,Modern,,-0.6,0.9,0.1,1804,Will to empire.
-Marx,politics,Modern,,-0.6,-0.2,0.6,1848,Historical materialism.
-Kierkegaard,philosophy,Christianity,Mainline Protestant,-0.7,0.8,-0.6,1843,Leap of faith; subjectivity.
-Maxwell (J. C.),science,Modern,,-0.5,0.6,-0.2,1865,Field theory; orderly laws.
-Darwin,science,Modern,,-0.4,0.6,0.6,1859,Natural selection.
+Newton,science,Modern,,0.6,0.7,-0.3,1687,Mathematical order; deistic tint.
+Locke,philosophy,Modern,,0.6,0.7,0.4,1690,Empiricism; rights.
+Hume,philosophy,Modern,,0.5,0.5,0.4,1740,Skepticism; habit.
+Rousseau,philosophy,Modern,,0.5,0.7,0.2,1762,Natural goodness; general will.
+Jefferson,politics,Modern,,0.6,0.8,0.4,1776,Enlightenment republicanism.
+Washington,politics,Modern,,0.6,0.7,0.3,1789,Republican virtue.
+Kant,philosophy,Modern,,0.6,0.6,-0.3,1785,Transcendental idealism; duty.
+Hegel,philosophy,Modern,,0.6,0.6,-0.4,1820,Dialectical history.
+Napoleon,politics,Modern,,0.6,0.9,0.1,1804,Will to empire.
+Marx,politics,Modern,,0.6,-0.2,0.6,1848,Historical materialism.
+Kierkegaard,philosophy,Christianity,Mainline Protestant,0.6,0.8,-0.6,1843,Leap of faith; subjectivity.
+Maxwell (J. C.),science,Modern,,0.5,0.6,-0.2,1865,Field theory; orderly laws.
+Darwin,science,Modern,,0.4,0.6,0.6,1859,Natural selection.
 Nietzsche,philosophy,Modern,,0.6,0.9,0.2,1885,Eternal recurrence; will to power.
-Weber,politics,Modern,,-0.6,0.6,0.3,1905,Rationalization; disenchantment.
+Weber,politics,Modern,,0.6,0.6,0.3,1905,Rationalization; disenchantment.
 Heidegger,philosophy,Modern,,0.0,0.5,0.4,1927,Being-in-the-world; historicity.
-Turing,science,Modern,,-0.5,0.8,0.6,1936,Computability; mechanization of reason.
-Gandhi,politics,Hinduism,Vedanta (General),0.3,0.8,0.5,1930,Ahimsa; satyagraha.
-Camus,philosophy,Modern,,-0.5,0.7,0.1,1942,Absurd; revolt.
-Sartre,philosophy,Modern,,-0.5,0.9,0.2,1943,Radical freedom; immanent meaning.
-Simone de Beauvoir,philosophy,Modern,,-0.5,0.9,0.2,1949,Existential freedom; situated ethics.
-M. L. King Jr.,politics,Christianity,Liberation,-0.6,0.8,-0.5,1963,Prophetic justice; moral agency.
+Turing,science,Modern,,0.5,0.8,0.6,1936,Computability; mechanization of reason.
+Gandhi,politics,Hinduism,Vedanta (General),-0.3,0.8,0.5,1930,Ahimsa; satyagraha.
+Camus,philosophy,Modern,,0.5,0.7,0.1,1942,Absurd; revolt.
+Sartre,philosophy,Modern,,0.5,0.9,0.2,1943,Radical freedom; immanent meaning.
+Simone de Beauvoir,philosophy,Modern,,0.5,0.9,0.2,1949,Existential freedom; situated ethics.
+M. L. King Jr.,politics,Christianity,Liberation,0.6,0.8,-0.5,1963,Prophetic justice; moral agency.
 Derrida,philosophy,Modern,,0.0,0.5,0.4,1967,Deconstruction; différance.
 Foucault,philosophy,Modern,,0.0,0.6,0.4,1975,Power/knowledge; genealogy.
-Archbishop Óscar Romero,politics,Christianity,Liberation,-0.5,0.8,-0.2,1980,Martyr of justice; liberation theology; God of the poor made immanent through action.
-Mandela,politics,Modern,,-0.5,0.8,0.4,1994,Reconciliation; pragmatic agency.
-Pope Gregory I (the Great),religion,Christianity,Catholic,-0.8,0.4,-0.7,600,Consolidated Western liturgy; Augustinian synthesis; strong transcendence.
-Pope Leo III,politics,Christianity,Catholic,-0.8,0.5,-0.6,800,Crowned Charlemagne; unity of empire and faith; divine sanction.
-Pope Nicholas I (the Great),politics,Christianity,Catholic,-0.8,0.5,-0.6,865,Asserted papal authority; moral law above rulers.
-Pope Gregory VII (Hildebrand),politics,Christianity,Catholic,-0.8,0.5,-0.7,1075,Investiture Controversy; supremacy of spiritual over temporal.
-Pope Urban II,politics,Christianity,Catholic,-0.8,0.5,-0.8,1095,Called First Crusade; militant teleology; transcendent mission.
-Pope Innocent III,politics,Christianity,Catholic,-0.8,0.4,-0.7,1215,Fourth Lateran Council; pinnacle of papal monarchy.
-Pope Boniface VIII,politics,Christianity,Catholic,-0.8,0.3,-0.8,1302,Declared papal supremacy in *Unam Sanctam*.
-Pope Clement V,politics,Christianity,Catholic,-0.8,0.3,-0.8,1310,Avignon Papacy; decline of Rome's temporal control.
-Pope Gregory XI,politics,Christianity,Catholic,-0.8,0.4,-0.7,1377,Returned papacy to Rome; pre-Great Schism.
-Pope Martin V,politics,Christianity,Catholic,-0.7,0.5,-0.6,1420,Ended Great Schism; conciliar balance.
-Pope Sixtus IV,politics,Christianity,Catholic,-0.7,0.5,-0.6,1480,Renaissance patron; humanist arts; cautious immanence.
-Pope Leo X,politics,Christianity,Catholic,-0.7,0.6,-0.6,1513,Patron of humanism; indulgences sparked Reformation.
-Pope Paul III,politics,Christianity,Catholic,-0.7,0.5,-0.6,1540,Council of Trent; Counter-Reformation; codified doctrine.
-Pope Pius V,religion,Christianity,Catholic,-0.8,0.4,-0.6,1570,Tridentine liturgy; discipline; transcendent moralism.
-Pope Urban VIII,politics,Christianity,Catholic,-0.7,0.6,-0.5,1633,Patron of Baroque arts; condemned Galileo; authority vs science.
-Pope Benedict XIV,religion,Christianity,Catholic,-0.7,0.6,-0.5,1750,Enlightenment engagement; early modernity dialogue.
-Pope Pius VII,politics,Christianity,Catholic,-0.7,0.6,-0.5,1800,Negotiated with Napoleon; Church vs secular state.
-Pope Gregory XVI,religion,Christianity,Catholic,-0.8,0.4,-0.6,1832,Opposed liberalism; rejected railways & democracy.
-Pope Pius IX,religion,Christianity,Catholic,-0.8,0.4,-0.7,1864,*Syllabus of Errors*; papal infallibility; anti-modern stance.
-Pope Leo XIII,religion,Christianity,Catholic,-0.7,0.6,-0.3,1891,*Rerum Novarum*; social teaching; turn toward immanence.
-Pope Pius X,religion,Christianity,Catholic,-0.8,0.5,-0.5,1905,Anti-modernist oath; strong transcendence.
-Pope Benedict XV,politics,Christianity,Catholic,-0.7,0.6,-0.4,1915,WWI peace efforts; humanitarian diplomacy.
-Pope Pius XI,religion,Christianity,Catholic,-0.7,0.6,-0.4,1930,*Quadragesimo Anno*; social order; balance hierarchy/agency.
-Pope Pius XII,religion,Christianity,Catholic,-0.7,0.5,-0.5,1940,Diplomacy during WWII; cautious transcendence.
-Pope John XXIII,religion,Christianity,Catholic,-0.6,0.7,-0.3,1962,Vatican II initiator; aggiornamento; participatory reform.
-Pope Paul VI,religion,Christianity,Catholic,-0.6,0.6,-0.3,1968,Implemented Vatican II; humanistic but conservative ethics.
-Pope John Paul I,religion,Christianity,Catholic,-0.6,0.7,-0.2,1978,"Smiling Pope"; pastoral openness; brief papacy.
-Pope John Paul II,religion,Christianity,Catholic,-0.7,0.7,-0.4,1980,Personalist theology; moral agency; global evangelism.
-Pope Benedict XVI,religion,Christianity,Catholic,-0.7,0.5,-0.5,2005,Faith & reason synthesis; conservative transcendence.
-Pope Francis,religion,Christianity,Catholic,-0.5,0.8,0.1,2013,Integral ecology; mercy; immanent social spirituality.
-Prophet Muhammad,religion,Islam,Sunni,-0.8,0.5,-0.8,630,Revelation of Qur'an; linear salvation history; submission to transcendent God.
-Ali ibn Abi Talib,politics,Islam,Shia,-0.8,0.6,-0.7,660,First Shia Imam; justice and moral agency under divine sovereignty.
-Hasan al-Basri,religion,Islam,Sunni,-0.8,0.5,-0.7,728,Early asceticism; fear of judgment; free will within divine knowledge.
-Jaʿfar al-Sadiq,religion,Islam,Shia,-0.7,0.6,-0.6,760,6th Shia Imam; rational jurisprudence; balance of will and order.
-Abu Hanifa,religion,Islam,Sunni,-0.7,0.6,-0.6,767,Hanafi school founder; reason in law; moderate transcendence.
-Malik ibn Anas,religion,Islam,Sunni,-0.8,0.5,-0.7,795,Medina traditionist; preservation of precedent; transcendence.
-Al-Shafiʿi,religion,Islam,Sunni,-0.8,0.5,-0.7,820,Unified legal methodology; revelation over reason.
-Ahmad ibn Hanbal,religion,Islam,Sunni,-0.8,0.4,-0.8,855,Literalist traditionalism; strict transcendence.
-Al-Maturidi,religion,Islam,Sunni,-0.7,0.6,-0.6,870,Sunni rationalism; free will reconciled with divine decree.
-Al-Ashʿari,religion,Islam,Sunni,-0.7,0.5,-0.7,935,Orthodox synthesis; occasionalism; transcendence.
-Al-Farabi,philosophy,Islam,,-0.6,0.5,-0.4,950,Islamic Aristotelianism; rational cosmos.
-Avicenna (Ibn Sina),philosophy,Islam,,-0.6,0.5,-0.5,1020,Philosophical rationalism; necessary being; transcendent intellect.
-Al-Ghazali,religion,Islam,Sufi,-0.7,0.5,-0.6,1100,Integrated mysticism with orthodoxy; surrender through awareness.
-Ibn Rushd (Averroes),philosophy,Islam,,-0.6,0.6,-0.4,1180,Commentator on Aristotle; reason-faith synthesis; mild immanence.
+Archbishop Óscar Romero,politics,Christianity,Liberation,0.5,0.8,-0.2,1980,Martyr of justice; liberation theology; God of the poor made immanent through action.
+Mandela,politics,Modern,,0.5,0.8,0.4,1994,Reconciliation; pragmatic agency.
+Pope Gregory I (the Great),religion,Christianity,Catholic,0.8,0.4,-0.7,600,Consolidated Western liturgy; Augustinian synthesis; strong transcendence.
+Pope Leo III,politics,Christianity,Catholic,0.8,0.5,-0.6,800,Crowned Charlemagne; unity of empire and faith; divine sanction.
+Pope Nicholas I (the Great),politics,Christianity,Catholic,0.8,0.5,-0.6,865,Asserted papal authority; moral law above rulers.
+Pope Gregory VII (Hildebrand),politics,Christianity,Catholic,0.8,0.5,-0.7,1075,Investiture Controversy; supremacy of spiritual over temporal.
+Pope Urban II,politics,Christianity,Catholic,0.8,0.5,-0.8,1095,Called First Crusade; militant teleology; transcendent mission.
+Pope Innocent III,politics,Christianity,Catholic,0.8,0.4,-0.7,1215,Fourth Lateran Council; pinnacle of papal monarchy.
+Pope Boniface VIII,politics,Christianity,Catholic,0.8,0.3,-0.8,1302,Declared papal supremacy in *Unam Sanctam*.
+Pope Clement V,politics,Christianity,Catholic,0.8,0.3,-0.8,1310,Avignon Papacy; decline of Rome's temporal control.
+Pope Gregory XI,politics,Christianity,Catholic,0.8,0.4,-0.7,1377,Returned papacy to Rome; pre-Great Schism.
+Pope Martin V,politics,Christianity,Catholic,0.7,0.5,-0.6,1420,Ended Great Schism; conciliar balance.
+Pope Sixtus IV,politics,Christianity,Catholic,0.7,0.5,-0.6,1480,Renaissance patron; humanist arts; cautious immanence.
+Pope Leo X,politics,Christianity,Catholic,0.7,0.6,-0.6,1513,Patron of humanism; indulgences sparked Reformation.
+Pope Paul III,politics,Christianity,Catholic,0.7,0.5,-0.6,1540,Council of Trent; Counter-Reformation; codified doctrine.
+Pope Pius V,religion,Christianity,Catholic,0.8,0.4,-0.6,1570,Tridentine liturgy; discipline; transcendent moralism.
+Pope Urban VIII,politics,Christianity,Catholic,0.7,0.6,-0.5,1633,Patron of Baroque arts; condemned Galileo; authority vs science.
+Pope Benedict XIV,religion,Christianity,Catholic,0.7,0.6,-0.5,1750,Enlightenment engagement; early modernity dialogue.
+Pope Pius VII,politics,Christianity,Catholic,0.7,0.6,-0.5,1800,Negotiated with Napoleon; Church vs secular state.
+Pope Gregory XVI,religion,Christianity,Catholic,0.8,0.4,-0.6,1832,Opposed liberalism; rejected railways & democracy.
+Pope Pius IX,religion,Christianity,Catholic,0.8,0.4,-0.7,1864,*Syllabus of Errors*; papal infallibility; anti-modern stance.
+Pope Leo XIII,religion,Christianity,Catholic,0.7,0.6,-0.3,1891,*Rerum Novarum*; social teaching; turn toward immanence.
+Pope Pius X,religion,Christianity,Catholic,0.8,0.5,-0.5,1905,Anti-modernist oath; strong transcendence.
+Pope Benedict XV,politics,Christianity,Catholic,0.7,0.6,-0.4,1915,WWI peace efforts; humanitarian diplomacy.
+Pope Pius XI,religion,Christianity,Catholic,0.7,0.6,-0.4,1930,*Quadragesimo Anno*; social order; balance hierarchy/agency.
+Pope Pius XII,religion,Christianity,Catholic,0.7,0.5,-0.5,1940,Diplomacy during WWII; cautious transcendence.
+Pope John XXIII,religion,Christianity,Catholic,0.6,0.7,-0.3,1962,Vatican II initiator; aggiornamento; participatory reform.
+Pope Paul VI,religion,Christianity,Catholic,0.6,0.6,-0.3,1968,Implemented Vatican II; humanistic but conservative ethics.
+Pope John Paul II,religion,Christianity,Catholic,0.7,0.7,-0.4,1980,Personalist theology; moral agency; global evangelism.
+Pope Benedict XVI,religion,Christianity,Catholic,0.7,0.5,-0.5,2005,Faith & reason synthesis; conservative transcendence.
+Pope Francis,religion,Christianity,Catholic,0.5,0.8,0.1,2013,Integral ecology; mercy; immanent social spirituality.
+Prophet Muhammad,religion,Islam,Sunni,0.8,0.5,-0.8,630,Revelation of Qur'an; linear salvation history; submission to transcendent God.
+Ali ibn Abi Talib,politics,Islam,Shia,0.8,0.6,-0.7,660,First Shia Imam; justice and moral agency under divine sovereignty.
+Hasan al-Basri,religion,Islam,Sunni,0.8,0.5,-0.7,728,Early asceticism; fear of judgment; free will within divine knowledge.
+Jaʿfar al-Sadiq,religion,Islam,Shia,0.7,0.6,-0.6,760,6th Shia Imam; rational jurisprudence; balance of will and order.
+Abu Hanifa,religion,Islam,Sunni,0.7,0.6,-0.6,767,Hanafi school founder; reason in law; moderate transcendence.
+Malik ibn Anas,religion,Islam,Sunni,0.8,0.5,-0.7,795,Medina traditionist; preservation of precedent; transcendence.
+Al-Shafiʿi,religion,Islam,Sunni,0.8,0.5,-0.7,820,Unified legal methodology; revelation over reason.
+Ahmad ibn Hanbal,religion,Islam,Sunni,0.8,0.4,-0.8,855,Literalist traditionalism; strict transcendence.
+Al-Maturidi,religion,Islam,Sunni,0.7,0.6,-0.6,870,Sunni rationalism; free will reconciled with divine decree.
+Al-Ashʿari,religion,Islam,Sunni,0.7,0.5,-0.7,935,Orthodox synthesis; occasionalism; transcendence.
+Al-Farabi,philosophy,Islam,,0.6,0.5,-0.4,950,Islamic Aristotelianism; rational cosmos.
+Avicenna (Ibn Sina),philosophy,Islam,,0.6,0.5,-0.5,1020,Philosophical rationalism; necessary being; transcendent intellect.
+Al-Ghazali,religion,Islam,Sufi,0.7,0.5,-0.6,1100,Integrated mysticism with orthodoxy; surrender through awareness.
+Ibn Rushd (Averroes),philosophy,Islam,,0.6,0.6,-0.4,1180,Commentator on Aristotle; reason-faith synthesis; mild immanence.
 Ibn Arabi,mysticism,Islam,Sufi,0.1,0.3,0.9,1200,*Wahdat al-wujūd*; unity of being; full immanence.
 Rumi,mysticism,Islam,Sufi,0.2,0.6,0.9,1250,Sufi poet; love as unifying divine energy; cyclical immanence.
-Nasir al-Din al-Tusi,philosophy,Islam,,-0.6,0.6,-0.4,1260,Shia philosopher-scientist; reconciliation of reason and faith.
-Ibn Taymiyyah,religion,Islam,Salafi,-0.8,0.5,-0.8,1325,Literalism; divine will absolute; anti-speculative transcendence.
-Al-Suyuti,religion,Islam,Sunni,-0.7,0.6,-0.5,1500,Scholar of synthesis; moderate traditionalism.
-Shah Waliullah Dehlawi,religion,Islam,Sunni,-0.6,0.6,-0.3,1750,Islamic renewal; sociological understanding of revelation.
-Muhammad ibn Abd al-Wahhab,politics,Islam,Salafi,-0.8,0.4,-0.8,1740,Reformist literalism; puritan transcendence.
-Jamal al-Din al-Afghani,politics,Islam,Sunni,-0.6,0.7,-0.2,1880,Pan-Islamic modernism; rationalist revival; participatory agency.
-Muhammad Abduh,religion,Islam,Sunni,-0.6,0.7,-0.2,1900,Reformist theology; reason as divine gift; immanent ethics.
-Rashid Rida,religion,Islam,Sunni,-0.6,0.6,-0.3,1910,Salafi reformer; modernist hermeneutic.
-Hasan al-Banna,politics,Islam,Sunni,-0.6,0.7,-0.3,1930,Founder Muslim Brotherhood; social justice and divine order.
-Sayyid Qutb,politics,Islam,Sunni,-0.7,0.7,-0.6,1955,Ideological Islamism; transcendent law over secular agency.
-Ali Shariati,philosophy,Islam,Shia,-0.5,0.8,-0.1,1970,Shia liberation theologian; synthesis of faith and revolution.
-Ayatollah Khomeini,politics,Islam,Shia,-0.6,0.6,-0.5,1979,Velayat-e faqih; divine authority through clerical agency.
-Seyyed Hossein Nasr,philosophy,Islam,,-0.4,0.6,-0.1,1990,Traditionalist metaphysics; sacred science; participatory cosmology.
-Fethullah Gülen,religion,Islam,Sunni,-0.4,0.8,0.1,2000,Dialogical Islam; education and service; immanent cooperation.
-Abraham,religion,Judaism,Biblical,-0.9,0.5,-0.8,-1800,Covenantal origin; linear promise; obedience to transcendent God.
-Moses,religion,Judaism,Biblical,-0.9,0.5,-0.8,-1250,Exodus narrative; lawgiving; historical teleology under divine command.
-Isaiah,religion,Judaism,Biblical,-0.8,0.6,-0.7,-700,Prophetic justice; moral agency within covenant history.
-Ezra the Scribe,religion,Judaism,Biblical,-0.8,0.4,-0.7,-450,Restoration law; scriptural canonization; historical transcendence.
-Hillel the Elder,philosophy,Judaism,Rabbinic,-0.7,0.6,-0.5,-20,Ethics of reciprocity; participatory law; immanent compassion within halakhah.
-Rabbi Akiva,religion,Judaism,Rabbinic,-0.7,0.6,-0.6,120,Martyrdom & mysticism; inner Torah unity; partial immanence.
-Rabbi Judah ha-Nasi,religion,Judaism,Rabbinic,-0.7,0.6,-0.6,200,Redaction of Mishnah; law as living order; balance of agency and obedience.
-Saadia Gaon,religion,Judaism,Rabbinic,-0.7,0.5,-0.6,930,Jewish rationalism; reason & revelation harmony; moderate transcendence.
-Solomon Ibn Gabirol (Avicebron),philosophy,Judaism,Rabbinic,-0.6,0.5,-0.5,1050,Neoplatonic emanation; divine will; proto-Kabbalistic thought.
-Rashi,religion,Judaism,Rabbinic,-0.7,0.6,-0.6,1100,Torah commentary; textual participation; lived halakhic immanence.
-Judah Halevi,philosophy,Judaism,Rabbinic,-0.7,0.5,-0.7,1140,*Kuzari*; experiential faith over philosophy; divine transcendence.
-Maimonides (Rambam),philosophy,Judaism,Rabbinic,-0.7,0.5,-0.6,1180,Aristotelian synthesis; negative theology; rational transcendence.
-Nachmanides (Ramban),philosophy,Judaism,Rabbinic,-0.6,0.6,-0.3,1250,Integrates mysticism into law; partial immanence.
-Abraham Abulafia,mysticism,Judaism,Kabbalah,-0.2,0.5,0.9,1280,Prophetic Kabbalah; ecstatic union through language.
+Nasir al-Din al-Tusi,philosophy,Islam,,0.6,0.6,-0.4,1260,Shia philosopher-scientist; reconciliation of reason and faith.
+Ibn Taymiyyah,religion,Islam,Salafi,0.8,0.5,-0.8,1325,Literalism; divine will absolute; anti-speculative transcendence.
+Al-Suyuti,religion,Islam,Sunni,0.7,0.6,-0.5,1500,Scholar of synthesis; moderate traditionalism.
+Shah Waliullah Dehlawi,religion,Islam,Sunni,0.6,0.6,-0.3,1750,Islamic renewal; sociological understanding of revelation.
+Muhammad ibn Abd al-Wahhab,politics,Islam,Salafi,0.8,0.4,-0.8,1740,Reformist literalism; puritan transcendence.
+Jamal al-Din al-Afghani,politics,Islam,Sunni,0.6,0.7,-0.2,1880,Pan-Islamic modernism; rationalist revival; participatory agency.
+Muhammad Abduh,religion,Islam,Sunni,0.6,0.7,-0.2,1900,Reformist theology; reason as divine gift; immanent ethics.
+Rashid Rida,religion,Islam,Sunni,0.6,0.6,-0.3,1910,Salafi reformer; modernist hermeneutic.
+Hasan al-Banna,politics,Islam,Sunni,0.6,0.7,-0.3,1930,Founder Muslim Brotherhood; social justice and divine order.
+Sayyid Qutb,politics,Islam,Sunni,0.7,0.7,-0.6,1955,Ideological Islamism; transcendent law over secular agency.
+Ali Shariati,philosophy,Islam,Shia,0.5,0.8,-0.1,1970,Shia liberation theologian; synthesis of faith and revolution.
+Ayatollah Khomeini,politics,Islam,Shia,0.6,0.6,-0.5,1979,Velayat-e faqih; divine authority through clerical agency.
+Seyyed Hossein Nasr,philosophy,Islam,,0.4,0.6,-0.1,1990,Traditionalist metaphysics; sacred science; participatory cosmology.
+Fethullah Gülen,religion,Islam,Sunni,0.4,0.8,0.1,2000,Dialogical Islam; education and service; immanent cooperation.
+Abraham,religion,Judaism,Biblical,0.9,0.5,-0.8,-1800,Covenantal origin; linear promise; obedience to transcendent God.
+Moses,religion,Judaism,Biblical,0.9,0.5,-0.8,-1250,Exodus narrative; lawgiving; historical teleology under divine command.
+Isaiah,religion,Judaism,Biblical,0.8,0.6,-0.7,-700,Prophetic justice; moral agency within covenant history.
+Ezra the Scribe,religion,Judaism,Biblical,0.8,0.4,-0.7,-450,Restoration law; scriptural canonization; historical transcendence.
+Hillel the Elder,philosophy,Judaism,Rabbinic,0.7,0.6,-0.5,-20,Ethics of reciprocity; participatory law; immanent compassion within halakhah.
+Rabbi Akiva,religion,Judaism,Rabbinic,0.7,0.6,-0.6,120,Martyrdom & mysticism; inner Torah unity; partial immanence.
+Rabbi Judah ha-Nasi,religion,Judaism,Rabbinic,0.7,0.6,-0.6,200,Redaction of Mishnah; law as living order; balance of agency and obedience.
+Saadia Gaon,religion,Judaism,Rabbinic,0.7,0.5,-0.6,930,Jewish rationalism; reason & revelation harmony; moderate transcendence.
+Solomon Ibn Gabirol (Avicebron),philosophy,Judaism,Rabbinic,0.6,0.5,-0.5,1050,Neoplatonic emanation; divine will; proto-Kabbalistic thought.
+Rashi,religion,Judaism,Rabbinic,0.7,0.6,-0.6,1100,Torah commentary; textual participation; lived halakhic immanence.
+Judah Halevi,philosophy,Judaism,Rabbinic,0.7,0.5,-0.7,1140,*Kuzari*; experiential faith over philosophy; divine transcendence.
+Maimonides (Rambam),philosophy,Judaism,Rabbinic,0.7,0.5,-0.6,1180,Aristotelian synthesis; negative theology; rational transcendence.
+Nachmanides (Ramban),philosophy,Judaism,Rabbinic,0.6,0.6,-0.3,1250,Integrates mysticism into law; partial immanence.
+Abraham Abulafia,mysticism,Judaism,Kabbalah,0.2,0.5,0.9,1280,Prophetic Kabbalah; ecstatic union through language.
 Isaac Luria (Ari),mysticism,Judaism,Kabbalah,0.0,0.5,0.9,1570,Lurianic Kabbalah; tzimtzum & repair; cyclical creation; strong immanence.
-Joseph Caro,religion,Judaism,Rabbinic,-0.6,0.5,-0.5,1560,*Shulchan Aruch*; codified law; disciplined transcendence.
+Joseph Caro,religion,Judaism,Rabbinic,0.6,0.5,-0.5,1560,*Shulchan Aruch*; codified law; disciplined transcendence.
 Baal Shem Tov (Besht),mysticism,Judaism,Hasidic,0.3,0.7,0.8,1740,Founder Hasidism; divine spark in all; joyous immanence.
-Vilna Gaon,religion,Judaism,Rabbinic,-0.6,0.6,-0.4,1780,Opposed Hasidism; rational-mystical synthesis; moderate transcendence.
-Moses Mendelssohn,philosophy,Judaism,Rabbinic,-0.6,0.7,-0.2,1775,Jewish Enlightenment; ethics & reason; participatory rationalism.
-Herman Cohen,philosophy,Judaism,,-0.6,0.6,-0.2,1900,Neo-Kantian idealism; ethical monotheism; transcendence in reason.
+Vilna Gaon,religion,Judaism,Rabbinic,0.6,0.6,-0.4,1780,Opposed Hasidism; rational-mystical synthesis; moderate transcendence.
+Moses Mendelssohn,philosophy,Judaism,Rabbinic,0.6,0.7,-0.2,1775,Jewish Enlightenment; ethics & reason; participatory rationalism.
+Herman Cohen,philosophy,Judaism,,0.6,0.6,-0.2,1900,Neo-Kantian idealism; ethical monotheism; transcendence in reason.
 Martin Buber,philosophy,Judaism,,0.0,0.8,0.6,1923,*I-Thou* relation; dialogical immanence; encounter theology.
-Abraham Joshua Heschel,religion,Judaism,Hasidic,-0.3,0.8,0.3,1965,Prophetic pathos; participatory God-human partnership.
+Abraham Joshua Heschel,religion,Judaism,Hasidic,0.3,0.8,0.3,1965,Prophetic pathos; participatory God-human partnership.
 Rabbi Menachem Mendel Schneerson (Lubavitcher Rebbe),mysticism,Judaism,Hasidic,0.1,0.8,0.6,1980,Hasidic activism; divine immanence in world action.
-Rabbi Mordecai Kaplan,religion,Judaism,Reconstructionist,-0.4,0.7,-0.1,1935,Founder Reconstructionism; God as process; communal immanence.
-Emmanuel Levinas,philosophy,Judaism,,-0.4,0.8,0.2,1970,Ethics as first philosophy; transcendence through relation.
-Rabbi Jonathan Sacks,religion,Judaism,Rabbinic,-0.5,0.8,0.1,2005,Dialogical modern orthodoxy; covenantal pluralism; immanent ethics.
-Buddhaghosa,philosophy,Buddhism,Theravada,0.6,0.1,0.8,450,Author of Visuddhimagga; analytic path; insight & discipline.
-Aśaṅga,philosophy,Buddhism,Mahayana,0.5,0.3,0.9,350,Consciousness-only; bodhisattva path; gradated cultivation.
-Vasubandhu,philosophy,Buddhism,Mahayana,0.5,0.3,0.9,400,Abhidharmika turned Yogācāra; mind-only analysis.
-Śāntideva,philosophy,Buddhism,Mahayana,0.5,0.7,0.9,750,*Bodhicaryāvatāra*; compassion/emptiness praxis.
-Bodhidharma,mysticism,Buddhism,Zen,0.4,0.6,0.95,520,Direct pointing to mind; meditation and insight.
-Huineng (6th Patriarch),mysticism,Buddhism,Zen,0.4,0.7,0.95,670,Sudden enlightenment; non-dual everyday mind.
-Zhiyi (Tiantai),philosophy,Buddhism,Tiantai,0.5,0.5,0.85,600,Threefold truth; contemplation syntheses.
-Xuanzang,philosophy,Buddhism,Mahayana,0.5,0.4,0.85,650,Translator/pilgrim; Yogācāra systematizer.
-Śāntarakṣita,philosophy,Buddhism,Mahayana,0.5,0.4,0.85,775,Integrative Madhyamaka with logic and tantra preface.
-Padmasambhava,mysticism,Buddhism,Vajrayana,0.4,0.6,0.9,800,Tantric master; Dzogchen seeds in Tibet; visionary yoga.
-Atiśa,philosophy,Buddhism,Vajrayana,0.4,0.5,0.85,1050,Reformist lamrim; ethics + meditation stages.
-Milarepa,mysticism,Buddhism,Vajrayana,0.5,0.7,0.95,1100,Yogi-poet; austerity to realization; spontaneous presence.
-Gampopa,philosophy,Buddhism,Vajrayana,0.5,0.5,0.85,1130,Streams Kadam lamrim into Kagyü Mahāmudrā.
-Tsongkhapa,philosophy,Buddhism,Vajrayana,0.4,0.5,0.9,1400,Prāsaṅgika rigor; ethics & analysis; refined emptiness.
-Shinran,philosophy,Buddhism,Pure Land,0.5,0.1,-0.2,1230,Other-power faith in Amitābha; radical reliance.
-Hōnen,philosophy,Buddhism,Pure Land,0.5,0.2,-0.2,1210,Nembutsu devotion; accessible path for laity.
-Nichiren,politics,Buddhism,Nichiren,0.5,0.8,0.5,1260,Lotus exclusivism; chanting as world-transforming agency.
-Kūkai (Kōbō-Daishi),mysticism,Buddhism,Shingon,0.4,0.6,0.9,820,Mantra/mandala body of Buddha; esoteric immanence.
-Saichō (Dengyō-Daishi),philosophy,Buddhism,Tendai,0.5,0.5,0.85,805,Inclusive Tendai synthesis; vinaya/meditation balance.
-Dōgen,mysticism,Buddhism,Zen,0.4,0.6,0.95,1240,Shikantaza; practice-realization non-dualism.
-Hakuin Ekaku,mysticism,Buddhism,Zen,0.4,0.8,0.9,1750,Koan reform; great doubt/great death breakthrough.
-14th Dalai Lama (Tenzin Gyatso),politics,Buddhism,Vajrayana,0.4,0.6,0.85,1989,Compassion; secular ethics; Madhyamaka diplomacy.
-Thich Nhat Hanh,philosophy,Buddhism,Zen,0.5,0.8,0.85,1965,Inter-being; mindfulness in social action.
-Ajahn Chah,philosophy,Buddhism,Theravada,0.5,0.4,0.85,1975,Direct simplicity; satipaṭṭhāna & letting-go.
-Mahasi Sayadaw,philosophy,Buddhism,Theravada,0.5,0.6,0.8,1950,Noting method; democratized vipassanā technique.
-Shunryu Suzuki,philosophy,Buddhism,Zen,0.4,0.6,0.9,1970,Beginner’s mind; everyday practice as realization.
-Yājñavalkya,philosophy,Hinduism,Vedanta (General),0.5,0.3,0.8,-800,Upanishadic sage; early Advaitic insight (‘neti-neti’); self as Brahman.
-Uddālaka Āruṇi,philosophy,Hinduism,Vedanta (General),0.5,0.3,0.8,-700,Teacher of Śvetaketu; “tat tvam asi”; unity of being in Chandogya Upaniṣad.
-Kapila,philosophy,Hinduism,,0.5,0.3,-0.2,-600,Founder of Sāṃkhya; puruṣa–prakṛti dualism; analytic realism.
-Patañjali,philosophy,Hinduism,,0.4,0.4,-0.1,-200,Author of Yoga Sūtras; classical Yoga; disciplined transcendence.
-Gautama (Akṣapāda),philosophy,Hinduism,,0.3,0.4,0.0,-200,Nyāya school founder; logic and inference as paths to truth.
-Kaṇāda,philosophy,Hinduism,,0.3,0.4,0.1,-200,Vaiśeṣika atomism; natural categories; early scientific realism.
-Jaimini,philosophy,Hinduism,,0.4,0.5,-0.1,-300,Mīmāṃsā ritualism; dharma through action; atheistic orthodoxy.
-Vyāsa (Bādarāyaṇa),philosophy,Hinduism,Vedanta (General),0.4,0.4,0.6,-200,Author of Brahma Sūtras; Vedānta synthesis.
+Rabbi Mordecai Kaplan,religion,Judaism,Reconstructionist,0.4,0.7,-0.1,1935,Founder Reconstructionism; God as process; communal immanence.
+Emmanuel Levinas,philosophy,Judaism,,0.4,0.8,0.2,1970,Ethics as first philosophy; transcendence through relation.
+Rabbi Jonathan Sacks,religion,Judaism,Rabbinic,0.5,0.8,0.1,2005,Dialogical modern orthodoxy; covenantal pluralism; immanent ethics.
+Buddhaghosa,philosophy,Buddhism,Theravada,-0.6,0.1,0.8,450,Author of Visuddhimagga; analytic path; insight & discipline.
+Aśaṅga,philosophy,Buddhism,Mahayana,-0.5,0.3,0.9,350,Consciousness-only; bodhisattva path; gradated cultivation.
+Vasubandhu,philosophy,Buddhism,Mahayana,-0.5,0.3,0.9,400,Abhidharmika turned Yogācāra; mind-only analysis.
+Śāntideva,philosophy,Buddhism,Mahayana,-0.5,0.7,0.9,750,*Bodhicaryāvatāra*; compassion/emptiness praxis.
+Bodhidharma,mysticism,Buddhism,Zen,-0.4,0.6,0.95,520,Direct pointing to mind; meditation and insight.
+Huineng (6th Patriarch),mysticism,Buddhism,Zen,-0.4,0.7,0.95,670,Sudden enlightenment; non-dual everyday mind.
+Zhiyi (Tiantai),philosophy,Buddhism,Tiantai,-0.5,0.5,0.85,600,Threefold truth; contemplation syntheses.
+Xuanzang,philosophy,Buddhism,Mahayana,-0.5,0.4,0.85,650,Translator/pilgrim; Yogācāra systematizer.
+Śāntarakṣita,philosophy,Buddhism,Mahayana,-0.5,0.4,0.85,775,Integrative Madhyamaka with logic and tantra preface.
+Padmasambhava,mysticism,Buddhism,Vajrayana,-0.4,0.6,0.9,800,Tantric master; Dzogchen seeds in Tibet; visionary yoga.
+Atiśa,philosophy,Buddhism,Vajrayana,-0.4,0.5,0.85,1050,Reformist lamrim; ethics + meditation stages.
+Milarepa,mysticism,Buddhism,Vajrayana,-0.5,0.7,0.95,1100,Yogi-poet; austerity to realization; spontaneous presence.
+Gampopa,philosophy,Buddhism,Vajrayana,-0.5,0.5,0.85,1130,Streams Kadam lamrim into Kagyü Mahāmudrā.
+Tsongkhapa,philosophy,Buddhism,Vajrayana,-0.4,0.5,0.9,1400,Prāsaṅgika rigor; ethics & analysis; refined emptiness.
+Shinran,philosophy,Buddhism,Pure Land,-0.5,0.1,-0.2,1230,Other-power faith in Amitābha; radical reliance.
+Hōnen,philosophy,Buddhism,Pure Land,-0.5,0.2,-0.2,1210,Nembutsu devotion; accessible path for laity.
+Nichiren,politics,Buddhism,Nichiren,-0.5,0.8,0.5,1260,Lotus exclusivism; chanting as world-transforming agency.
+Kūkai (Kōbō-Daishi),mysticism,Buddhism,Shingon,-0.4,0.6,0.9,820,Mantra/mandala body of Buddha; esoteric immanence.
+Saichō (Dengyō-Daishi),philosophy,Buddhism,Tendai,-0.5,0.5,0.85,805,Inclusive Tendai synthesis; vinaya/meditation balance.
+Dōgen,mysticism,Buddhism,Zen,-0.4,0.6,0.95,1240,Shikantaza; practice-realization non-dualism.
+Hakuin Ekaku,mysticism,Buddhism,Zen,-0.4,0.8,0.9,1750,Koan reform; great doubt/great death breakthrough.
+14th Dalai Lama (Tenzin Gyatso),politics,Buddhism,Vajrayana,-0.4,0.6,0.85,1989,Compassion; secular ethics; Madhyamaka diplomacy.
+Thich Nhat Hanh,philosophy,Buddhism,Zen,-0.5,0.8,0.85,1965,Inter-being; mindfulness in social action.
+Ajahn Chah,philosophy,Buddhism,Theravada,-0.5,0.4,0.85,1975,Direct simplicity; satipaṭṭhāna & letting-go.
+Mahasi Sayadaw,philosophy,Buddhism,Theravada,-0.5,0.6,0.8,1950,Noting method; democratized vipassanā technique.
+Shunryu Suzuki,philosophy,Buddhism,Zen,-0.4,0.6,0.9,1970,Beginner’s mind; everyday practice as realization.
+Yājñavalkya,philosophy,Hinduism,Vedanta (General),-0.5,0.3,0.8,-800,Upanishadic sage; early Advaitic insight (‘neti-neti’); self as Brahman.
+Uddālaka Āruṇi,philosophy,Hinduism,Vedanta (General),-0.5,0.3,0.8,-700,Teacher of Śvetaketu; “tat tvam asi”; unity of being in Chandogya Upaniṣad.
+Kapila,philosophy,Hinduism,,-0.5,0.3,-0.2,-600,Founder of Sāṃkhya; puruṣa–prakṛti dualism; analytic realism.
+Patañjali,philosophy,Hinduism,,-0.4,0.4,-0.1,-200,Author of Yoga Sūtras; classical Yoga; disciplined transcendence.
+Gautama (Akṣapāda),philosophy,Hinduism,,-0.3,0.4,0.0,-200,Nyāya school founder; logic and inference as paths to truth.
+Kaṇāda,philosophy,Hinduism,,-0.3,0.4,0.1,-200,Vaiśeṣika atomism; natural categories; early scientific realism.
+Jaimini,philosophy,Hinduism,,-0.4,0.5,-0.1,-300,Mīmāṃsā ritualism; dharma through action; atheistic orthodoxy.
+Vyāsa (Bādarāyaṇa),philosophy,Hinduism,Vedanta (General),-0.4,0.4,0.6,-200,Author of Brahma Sūtras; Vedānta synthesis.
 Adi Śaṅkara,philosophy,Hinduism,Advaita Vedanta,0.0,0.0,1.0,800,Advaita Vedānta; non-duality; illusion of separateness.
-Rāmānuja,philosophy,Hinduism,Vedanta (General),0.3,0.5,0.6,1100,Viśiṣṭādvaita Vedānta; devotion within unity; personal theism.
-Madhva,philosophy,Hinduism,,0.3,0.5,-0.3,1250,Dvaita Vedānta; eternal dualism of God and souls.
-Abhinavagupta,mysticism,Hinduism,Tantric,0.4,0.7,0.8,1000,Kashmir Śaivism; aesthetics of consciousness; divine vibration (spanda).
-Basava (Basavanna),mysticism,Hinduism,Bhakti,0.4,0.7,0.6,1160,Liṅgāyat bhakti; equality and work as worship.
-Kabir,mysticism,Hinduism,Bhakti,0.4,0.8,0.7,1450,Poet-saint bridging Hindu and Islamic devotion; inner realization.
-Tulsidas,philosophy,Hinduism,Bhakti,0.4,0.7,0.6,1600,Rāma bhakti; moral devotion in vernacular poetry.
-Mirabai,mysticism,Hinduism,Bhakti,0.5,0.8,0.8,1520,Kṛṣṇa bhakti; ecstatic love and liberation through song.
-Chaitanya Mahāprabhu,mysticism,Hinduism,Bhakti,0.4,0.8,0.8,1510,Founder of Gauḍīya Vaiṣṇavism; divine play (līlā) and chanting.
-Vallabha Ācārya,philosophy,Hinduism,Vedanta (General),0.2,0.6,0.8,1500,Śuddhādvaita Vedānta; grace-based joyous non-dualism.
-Śaiva Āgamic Teachers,mysticism,Hinduism,Tantric,0.4,0.7,0.7,900,Śaiva tantra; non-dual consciousness; immanent Śiva.
-Swami Vivekananda,philosophy,Hinduism,Vedanta (General),0.3,0.8,0.8,1893,Neo-Vedānta; social action as spiritual duty; universal Advaita.
-Sri Aurobindo,philosophy,Hinduism,Vedanta (General),0.3,0.8,0.8,1910,Integral yoga; evolution of consciousness; matter’s divinization.
-Ramakrishna Paramahamsa,mysticism,Hinduism,Bhakti,0.2,0.7,0.9,1880,Experiential unity of all faiths; direct realization.
-Anandamayi Ma,mysticism,Hinduism,Bhakti,0.2,0.8,0.9,1940,Spontaneous realization; divine embodiment; living saint.
-Sarvepalli Radhakrishnan,philosophy,Hinduism,Vedanta (General),0.3,0.7,0.7,1930,Philosopher-president; synthesis of reason and mysticism.
-Swami Sivananda,mysticism,Hinduism,Vedanta (General),0.3,0.6,0.8,1940,Integral Yoga; selfless service (seva) and meditation.
-Paramahansa Yogananda,mysticism,Hinduism,Vedanta (General),0.3,0.8,0.8,1946,Kriyā Yoga; East–West synthesis; *Autobiography of a Yogi*.
-Sri Chinmoy,mysticism,Hinduism,Bhakti,0.3,0.8,0.8,1970,Integral Yoga; peace and self-transcendence through art and meditation.
-Sathya Sai Baba,mysticism,Hinduism,Bhakti,0.2,0.8,0.8,1975,Modern bhakti teacher; service; love; avatar ideal.
+Rāmānuja,philosophy,Hinduism,Vedanta (General),-0.3,0.5,0.6,1100,Viśiṣṭādvaita Vedānta; devotion within unity; personal theism.
+Madhva,philosophy,Hinduism,,-0.3,0.5,-0.3,1250,Dvaita Vedānta; eternal dualism of God and souls.
+Abhinavagupta,mysticism,Hinduism,Tantric,-0.4,0.7,0.8,1000,Kashmir Śaivism; aesthetics of consciousness; divine vibration (spanda).
+Basava (Basavanna),mysticism,Hinduism,Bhakti,-0.4,0.7,0.6,1160,Liṅgāyat bhakti; equality and work as worship.
+Kabir,mysticism,Hinduism,Bhakti,-0.4,0.8,0.7,1450,Poet-saint bridging Hindu and Islamic devotion; inner realization.
+Tulsidas,philosophy,Hinduism,Bhakti,-0.4,0.7,0.6,1600,Rāma bhakti; moral devotion in vernacular poetry.
+Mirabai,mysticism,Hinduism,Bhakti,-0.5,0.8,0.8,1520,Kṛṣṇa bhakti; ecstatic love and liberation through song.
+Chaitanya Mahāprabhu,mysticism,Hinduism,Bhakti,-0.4,0.8,0.8,1510,Founder of Gauḍīya Vaiṣṇavism; divine play (līlā) and chanting.
+Vallabha Ācārya,philosophy,Hinduism,Vedanta (General),-0.2,0.6,0.8,1500,Śuddhādvaita Vedānta; grace-based joyous non-dualism.
+Śaiva Āgamic Teachers,mysticism,Hinduism,Tantric,-0.4,0.7,0.7,900,Śaiva tantra; non-dual consciousness; immanent Śiva.
+Swami Vivekananda,philosophy,Hinduism,Vedanta (General),-0.3,0.8,0.8,1893,Neo-Vedānta; social action as spiritual duty; universal Advaita.
+Sri Aurobindo,philosophy,Hinduism,Vedanta (General),-0.3,0.8,0.8,1910,Integral yoga; evolution of consciousness; matter’s divinization.
+Ramakrishna Paramahamsa,mysticism,Hinduism,Bhakti,-0.2,0.7,0.9,1880,Experiential unity of all faiths; direct realization.
+Anandamayi Ma,mysticism,Hinduism,Bhakti,-0.2,0.8,0.9,1940,Spontaneous realization; divine embodiment; living saint.
+Sarvepalli Radhakrishnan,philosophy,Hinduism,Vedanta (General),-0.3,0.7,0.7,1930,Philosopher-president; synthesis of reason and mysticism.
+Swami Sivananda,mysticism,Hinduism,Vedanta (General),-0.3,0.6,0.8,1940,Integral Yoga; selfless service (seva) and meditation.
+Paramahansa Yogananda,mysticism,Hinduism,Vedanta (General),-0.3,0.8,0.8,1946,Kriyā Yoga; East–West synthesis; *Autobiography of a Yogi*.
+Sri Chinmoy,mysticism,Hinduism,Bhakti,-0.3,0.8,0.8,1970,Integral Yoga; peace and self-transcendence through art and meditation.
+Sathya Sai Baba,mysticism,Hinduism,Bhakti,-0.2,0.8,0.8,1975,Modern bhakti teacher; service; love; avatar ideal.
 Ramana Maharshi,mysticism,Hinduism,Advaita Vedanta,0.0,0.4,0.9,1930,Advaita realization; self-inquiry (‘Who am I?’); silent transmission.
 Nisargadatta Maharaj,mysticism,Hinduism,Advaita Vedanta,0.0,0.4,0.9,1970,Non-dual awareness; formless witness consciousness.
-Swami Chinmayananda,philosophy,Hinduism,Advaita Vedanta,0.1,0.7,0.7,1960,Modern Advaita interpreter; Vedānta for rational audiences.
-Sadhguru Jaggi Vasudev,mysticism,Hinduism,Vedanta (General),0.2,0.8,0.7,2010,Contemporary yogic synthesis; pragmatic mysticism.
-Mata Amritanandamayi (Amma),mysticism,Hinduism,Bhakti,0.2,0.8,0.8,2015,Modern bhakti teacher; compassion and service through divine embrace.
-Auguste Comte,philosophy,Modern,,-0.7,0.5,0.4,1842,Positivism; social physics; empirical law of progress.
-William James,philosophy,Modern,,-0.2,0.8,0.6,1902,Pragmatism and religious experience; truth as lived verification.
-Sigmund Freud,philosophy,Modern,,-0.5,0.5,0.3,1900,Psychoanalysis; determinism of unconscious; secular interiority.
-Carl Jung,philosophy,Modern,,-0.2,0.6,0.8,1920,Archetypes; individuation; psyche as sacred totality.
-Albert Einstein,science,Modern,,-0.5,0.6,0.5,1915,Relativity; rational cosmos; “God does not play dice.”
-Bertrand Russell,philosophy,Modern,,-0.6,0.7,0.4,1920,Analytic logic; skeptical empiricism; secular ethics.
-Jean-Paul Sartre,philosophy,Modern,,-0.5,0.9,0.2,1943,Existential freedom; immanent meaning; radical responsibility.
-Simone de Beauvoir,philosophy,Modern,,-0.5,0.9,0.2,1949,Feminist existentialism; situated freedom and ethics.
-Albert Camus,philosophy,Modern,,-0.6,0.6,0.1,1942,Absurdism; revolt as creation of meaning.
+Swami Chinmayananda,philosophy,Hinduism,Advaita Vedanta,-0.1,0.7,0.7,1960,Modern Advaita interpreter; Vedānta for rational audiences.
+Sadhguru Jaggi Vasudev,mysticism,Hinduism,Vedanta (General),-0.2,0.8,0.7,2010,Contemporary yogic synthesis; pragmatic mysticism.
+Mata Amritanandamayi (Amma),mysticism,Hinduism,Bhakti,-0.2,0.8,0.8,2015,Modern bhakti teacher; compassion and service through divine embrace.
+Auguste Comte,philosophy,Modern,,0.7,0.5,0.4,1842,Positivism; social physics; empirical law of progress.
+William James,philosophy,Modern,,0.2,0.8,0.6,1902,Pragmatism and religious experience; truth as lived verification.
+Sigmund Freud,philosophy,Modern,,0.5,0.5,0.3,1900,Psychoanalysis; determinism of unconscious; secular interiority.
+Carl Jung,philosophy,Modern,,0.2,0.6,0.8,1920,Archetypes; individuation; psyche as sacred totality.
+Albert Einstein,science,Modern,,0.5,0.6,0.5,1915,Relativity; rational cosmos; “God does not play dice.”
+Bertrand Russell,philosophy,Modern,,0.6,0.7,0.4,1920,Analytic logic; skeptical empiricism; secular ethics.
+Jean-Paul Sartre,philosophy,Modern,,0.5,0.9,0.2,1943,Existential freedom; immanent meaning; radical responsibility.
+Simone de Beauvoir,philosophy,Modern,,0.5,0.9,0.2,1949,Feminist existentialism; situated freedom and ethics.
+Albert Camus,philosophy,Modern,,0.6,0.6,0.1,1942,Absurdism; revolt as creation of meaning.
 Alan Watts,philosophy,Modern,,0.2,0.8,0.8,1960,Zen-Taoist popularizer; Western integration of non-duality.
 Aldous Huxley,philosophy,Modern,,0.1,0.7,0.8,1954,*Perennial Philosophy*; psychedelic mysticism; consciousness exploration.
-Erich Fromm,philosophy,Modern,,-0.4,0.8,0.6,1950,HUMANIST psychoanalysis; love and freedom as moral creativity.
-Abraham Maslow,philosophy,Modern,,-0.3,0.8,0.7,1954,Humanistic psychology; self-actualization and peak experience.
-Carl Rogers,philosophy,Modern,,-0.3,0.9,0.7,1961,Client-centered therapy; organismic trust and empathy.
+Erich Fromm,philosophy,Modern,,0.4,0.8,0.6,1950,HUMANIST psychoanalysis; love and freedom as moral creativity.
+Abraham Maslow,philosophy,Modern,,0.3,0.8,0.7,1954,Humanistic psychology; self-actualization and peak experience.
+Carl Rogers,philosophy,Modern,,0.3,0.9,0.7,1961,Client-centered therapy; organismic trust and empathy.
 Buckminster Fuller,science,Modern,,0.1,0.8,0.7,1965,Comprehensive design science; synergy; planetary systems view.
 Marshall McLuhan,philosophy,Modern,,0.1,0.7,0.6,1964,Media as extensions of consciousness; pattern perception.
 Pierre Teilhard de Chardin,philosophy,Modern,,0.2,0.7,0.8,1955,Noosphere; cosmic Christ; evolution toward unity.
@@ -250,39 +249,38 @@ Ram Dass,mysticism,Modern,,0.2,0.9,0.9,1970,*Be Here Now*; love and service; Wes
 Eckhart Tolle,mysticism,Modern,,0.1,0.9,0.9,2000,*Power of Now*; stillness and presence; secular non-duality.
 Deepak Chopra,mysticism,Modern,,0.1,0.8,0.8,2005,Quantum healing; mind-body unity; modern Vedānta framing.
 Rupert Sheldrake,science,Modern,,0.1,0.6,0.7,2012,Morphic resonance; participatory science; re-enchanted nature.
-Elon Musk,politics,Modern,,-0.3,0.9,0.1,2020,Technological will; transhumanist agency; planetary colonization.
-Yuval Noah Harari,philosophy,Modern,,-0.2,0.8,0.3,2020,Homo Deus; dataism; secular narrative of transcendence.
+Elon Musk,politics,Modern,,0.3,0.9,0.1,2020,Technological will; transhumanist agency; planetary colonization.
+Yuval Noah Harari,philosophy,Modern,,0.2,0.8,0.3,2020,Homo Deus; dataism; secular narrative of transcendence.
 Marianne Williamson,mysticism,Modern,,0.1,0.8,0.8,2010,Course in Miracles teacher; love as social spirituality.
-Jordan Peterson,philosophy,Modern,,-0.4,0.8,-0.1,2018,Mythic order and moral responsibility; tension between structure and freedom.
-Sam Harris,philosophy,Modern,,-0.3,0.8,0.6,2020,Secular mindfulness; spirituality without religion.
+Jordan Peterson,philosophy,Modern,,0.4,0.8,-0.1,2018,Mythic order and moral responsibility; tension between structure and freedom.
+Sam Harris,philosophy,Modern,,0.3,0.8,0.6,2020,Secular mindfulness; spirituality without religion.
 Rupert Spira,mysticism,Modern,,0.0,0.8,0.9,2015,Non-dual awareness; consciousness as all-inclusive reality.
 Enheduanna,philosophy,Mesopotamian,State Religion,0.6,0.2,-0.7,-2300,High priestess of Ur; hymns to Inanna; cosmic order via divine determinism.
-Lucretius,philosophy,Hellenic,,0.4,0.3,0.6,-50,Atomist poet; *De Rerum Natura*; natural cycles and material immanence.
-Marcus Aurelius,philosophy,Hellenic,Stoicism,0.2,0.3,0.4,175,Emperor-philosopher; Stoic acceptance; order through reason and fate.
-Porphyry,philosophy,Hellenic,,0.0,0.4,-0.6,270,Neoplatonic ethicist; rational ascent to divine intellect.
-Iamblichus,philosophy,Hellenic,,0.1,0.5,-0.7,320,Theurgic mysticism; ritual mediation between worlds.
-Tertullian,theology,Christianity,Catholic,-0.9,0.2,-0.8,200,Dogmatic Latin Father; faith over reason; strict transcendence.
-Zhu Xi,philosophy,Confucian,Classical,0.5,0.3,-0.4,1200,Neo-Confucian synthesis; moral principle (li) as cosmic order.
-Wang Yangming,philosophy,Confucian,Classical,0.5,0.6,-0.3,1520,Unity of knowing and acting; mind as moral will; participatory idealism.
+Lucretius,philosophy,Hellenic,,-0.2,0.3,0.6,-50,Atomist poet; *De Rerum Natura*; natural cycles and material immanence.
+Marcus Aurelius,philosophy,Hellenic,Stoicism,-0.2,0.3,0.4,175,Emperor-philosopher; Stoic acceptance; order through reason and fate.
+Porphyry,philosophy,Hellenic,,-0.0,0.4,-0.6,270,Neoplatonic ethicist; rational ascent to divine intellect.
+Iamblichus,philosophy,Hellenic,,-0.05,0.5,-0.7,320,Theurgic mysticism; ritual mediation between worlds.
+Tertullian,theology,Christianity,Catholic,0.9,0.2,-0.8,200,Dogmatic Latin Father; faith over reason; strict transcendence.
+Zhu Xi,philosophy,Confucian,Classical,-0.3,0.3,-0.4,1200,Neo-Confucian synthesis; moral principle (li) as cosmic order.
+Wang Yangming,philosophy,Confucian,Classical,-0.3,0.6,-0.3,1520,Unity of knowing and acting; mind as moral will; participatory idealism.
 Hermes Trismegistus,mysticism,Hermetic,,0.3,0.6,-0.6,-100,Foundational Hermetic sage; “as above so below”; ascent through gnosis.
 Paracelsus,science,Hermetic,,0.4,0.6,0.7,1520,Physician-alchemist; divine forces within matter; immanent healing.
 Giordano Bruno,philosophy,Hermetic,,0.4,0.7,0.8,1600,Infinite cosmos; pantheism; cyclical emanation and return.
-Helena Blavatsky,mysticism,Theosophy,,0.4,0.7,0.8,1880,Founder of Theosophical Society; esoteric evolution of consciousness.
-Rudolf Steiner,philosophy,Anthroposophy,,0.4,0.8,0.8,1910,Spiritual science; reincarnation and planetary pedagogy.
-Aleister Crowley,mysticism,Occult,,0.4,0.8,-0.5,1910,Thelema; magical will; self-deification through ritual.
-Eliphas Lévi,mysticism,Occult,,0.3,0.7,-0.6,1855,French occult revivalist; *Dogme et Rituel de la Haute Magie*; synthesis of Kabbalah, alchemy, and Christian theurgy.
+Helena Blavatsky,mysticism,Theosophy,,-0.24,0.7,0.8,1880,Founder of Theosophical Society; esoteric evolution of consciousness.
+Rudolf Steiner,philosophy,Anthroposophy,,-0.24,0.8,0.8,1910,Spiritual science; reincarnation and planetary pedagogy.
+Aleister Crowley,mysticism,Occult,,-0.24,0.8,-0.5,1910,Thelema; magical will; self-deification through ritual.
 Dion Fortune,mysticism,Occult,,0.4,0.8,-0.4,1935,Founder of Society of Inner Light; psychospiritual occultism bridging mysticism and depth psychology.
 Israel Regardie,mysticism,Occult,,0.3,0.8,-0.3,1940,Golden Dawn chronicler; integrated ceremonial magic with Jungian psychology; Western Kabbalistic synthesis.
-Anton Wilhelm Amo,philosophy,Modern,,-0.4,0.7,-0.2,1730,African Enlightenment thinker; rational freedom; proto-humanist.
-Kwame Nkrumah,politics,Modern,,-0.5,0.7,0.4,1960,Pan-African socialism; consciencism; dialectic of material and spirit.
+Anton Wilhelm Amo,philosophy,Modern,,0.4,0.7,-0.2,1730,African Enlightenment thinker; rational freedom; proto-humanist.
+Kwame Nkrumah,politics,Modern,,0.5,0.7,0.4,1960,Pan-African socialism; consciencism; dialectic of material and spirit.
 Léopold Sédar Senghor,philosophy,Modern,,0.4,0.7,0.6,1950,Negritude; emotional reason; rhythmic participation in being.
-Black Elk,mysticism,Indigenous,Animism,0.6,0.8,0.9,1890,Lakota visionary; sacred hoop; cosmic renewal through ritual.
+Black Elk,mysticism,Indigenous,Animism,-0.6,0.8,0.9,1890,Lakota visionary; sacred hoop; cosmic renewal through ritual.
 Thomas Berry,philosophy,Modern,,0.5,0.8,0.9,1990,Ecotheologian; Universe Story; immanent sacred cosmology.
 James Lovelock,science,Modern,,0.5,0.3,0.9,1972,Gaia hypothesis; self-regulating biosphere; planetary immanence.
 Nikola Tesla,science,Modern,,0.3,0.8,0.7,1895,Technological mystic; resonance cosmology; creative cycles of energy.
-Ray Kurzweil,science,Modern,,-0.4,0.9,0.2,2015,Singularity theorist; exponential progress; techno-teleology.
-Donna Haraway,philosophy,Modern,,-0.2,0.9,0.6,2015,Cyborg feminism; posthuman relational ontology; hybrid immanence.
-Robin Wall Kimmerer,philosophy,Indigenous,Animism,0.6,0.8,0.9,2015,*Braiding Sweetgrass*; reciprocity with land; kinship ethics.
-Suhrawardī (Illuminationist),philosophy,Islam,,-0.3,0.6,-0.5,1186,Philosophy of illumination; divine light as hierarchical continuum.
-Ibn Taymiyyah,theology,Islam,Salafi,-0.8,0.5,-0.8,1325,Literalist reformer; divine will absolute; anti-speculative transcendence.
-Luisa Piccarreta,mysticism,Christianity,Catholic,-0.6,0.6,0.6,1910,Mystic of “Divine Will”; cyclical sanctification; participatory theosis.
+Ray Kurzweil,science,Modern,,0.4,0.9,0.2,2015,Singularity theorist; exponential progress; techno-teleology.
+Donna Haraway,philosophy,Modern,,0.2,0.9,0.6,2015,Cyborg feminism; posthuman relational ontology; hybrid immanence.
+Robin Wall Kimmerer,philosophy,Indigenous,Animism,-0.6,0.8,0.9,2015,*Braiding Sweetgrass*; reciprocity with land; kinship ethics.
+Suhrawardī (Illuminationist),philosophy,Islam,,0.3,0.6,-0.5,1186,Philosophy of illumination; divine light as hierarchical continuum.
+Ibn Taymiyyah,theology,Islam,Salafi,0.8,0.5,-0.8,1325,Literalist reformer; divine will absolute; anti-speculative transcendence.
+Luisa Piccarreta,mysticism,Christianity,Catholic,0.6,0.6,0.6,1910,Mystic of “Divine Will”; cyclical sanctification; participatory theosis.
